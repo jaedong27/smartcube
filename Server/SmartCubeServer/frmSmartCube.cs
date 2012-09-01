@@ -8,6 +8,10 @@ using System.Text;
 using System.Windows.Forms;
 using System.Threading;
 using Bend.Util;
+using System.Xml;
+
+using SmartCubeServer;
+using System.Xml.Serialization;
 
 namespace SmartCubeServer
 {
@@ -29,7 +33,19 @@ namespace SmartCubeServer
 
         private void button1_Click(object sender, EventArgs e)
         {
-            webBrowser.Navigate("http://localhost:8080");
+            //webBrowser.Navigate("http://localhost:8080");
+            SmartCubeStatus vcube = new SmartCubeStatus();
+            vcube.length = 3;
+            // Person 객체를 XMLNode 객체로 변환
+            XmlNode xmlPersion = ObjectSerializer.SerializeObject(vcube, typeof(SmartCubeStatus));
+            //Console.WriteLine(xmlPersion.OuterXml);
+            System.Diagnostics.Debug.WriteLine(xmlPersion.OuterXml);
+
+            // XMLNode 객체를 Person 객체로 변환
+            //Person person2 = (Person)RKZSerializer.DeserializeObject(xmlPersion, typeof(Person));
+            //Console.WriteLine(person2.Age);
         }
+
+        
     }
 }
