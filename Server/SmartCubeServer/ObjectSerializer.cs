@@ -5,7 +5,7 @@ using System.Text;
 using System.Diagnostics;
 using System.Xml;
 using System.Xml.Serialization;
- 
+
 namespace SmartCubeServer
 {
     class ObjectSerializer
