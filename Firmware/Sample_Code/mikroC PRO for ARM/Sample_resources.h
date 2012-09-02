@@ -10,6 +10,6 @@
 #define number9_bmp 0x00044D3E
 #define plus_bmp    0x0004DEEC
 #define minus_bmp   0x000549DC
-#define mutiple_bmp 0x000567B0
+#define multiple_bmp 0x000567B0
 #define divide_bmp  0x0005CC5A
 #define equal_bmp   0x00064212

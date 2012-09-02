@@ -381,7 +381,7 @@ static void InitializeObjects() {
   multiple.Height         = 113;
   multiple.Picture_Type   = 0;
   multiple.Picture_Ratio  = 1;
-  multiple.Picture_Name   = mutiple_bmp;
+  multiple.Picture_Name   = multiple_bmp;
   multiple.Visible        = 0;
   multiple.Active         = 1;
   multiple.OnUpPtr         = 0;

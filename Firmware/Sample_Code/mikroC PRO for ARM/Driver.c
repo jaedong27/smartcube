@@ -1,9 +1,10 @@
 
+#include "IR.h"
 #include "Driver.h"
-#include "ACCEL_driver.h"
 #include "Sample_resources.h"
 // "#include " + Project + "_objects.h"
 #include "Sample_objects.h"
+
 
 #define COMM_IDLE 0
 #define COMM_DATA 1
@@ -349,6 +350,7 @@ void Timer0A_interrupt() iv IVT_INT_TIMER0A {
   TIMER_ICR_TATOCINT_bit = 1;              // Clear time-out timer A interrupt
   //GPIO_PORTJ_DATA = ~GPIO_PORTJ_DATA;      // Toggle PORTJ led's
   tick_10um_time++;
+  SendIRInterruptProcess();
 }
 
 void Start_Driver(void) {
@@ -356,10 +358,10 @@ void Start_Driver(void) {
      // -----  Accel Sensor
 
      // Initialize I2C communication
-     I2C0_Init_Advanced(100000, &_GPIO_MODULE_I2C0_B23);
+     //I2C0_Init_Advanced(100000, &_GPIO_MODULE_I2C0_B23);
      
      // Accel Sensor Init
-     ADXL345_Init();
+     //ADXL345_Init();
 
      // Timer0 init
 
@@ -393,7 +395,7 @@ void Start_Driver(void) {
      UART_LCRH_FEN_UART2_LCRH_bit = 0;
      NVIC_IntEnable(IVT_INT_UART2);    // Enable UART2 interrupt
 
-     UART2_Write("Test Sample");
+     UART2_Write_Text("Test Sample");
 
      EnableInterrupts();               // Enables the processor interrupt.
 
@@ -649,46 +651,6 @@ if(displaynumberindex == 13) return;
 
 }
 
-
-unsigned int accelflag = 0;
-void Check_Accel(void)
-{
-     long x , y , z, total;
-     double force_size;
-     x = (long)(Accel_ReadX());
-     y = (long)(Accel_ReadY());
-     z = (long)(Accel_ReadZ());
-     CommStructData.lm_gyro_x = (short)(x>>2);
-     CommStructData.lm_gyro_y = (short)(y>>2);
-     CommStructData.lm_gyro_z = (short)(z>>2);
-     /*
-     UARTShortPrint(CommStructData.lm_gyro_x);
-     UART0_Write(',');
-     UARTShortPrint(CommStructData.lm_gyro_y);
-     UART0_Write(',');
-     UARTShortPrint(CommStructData.lm_gyro_z);
-     UART0_Write(0x0D);
-     UART0_Write(0x0A);
-     */
-     total = x*x + y*y + z*z;
-
-     force_size = sqrt((double)total);
-     
-     if(force_size > 520.)
-     {
-           accelflag = 1;
-           //UART_Write_Text("AccelDetect\r\n");
-     }
-/*
-     UART0_Write_Text("X:");
-     UARTIntegerPrint(x);
-     UART0_Write_Text("Y:");
-     UARTIntegerPrint(y);
-     UART0_Write_Text("Z:");
-     UARTIntegerPrint(z);
-     UART0_Write_Text("Total:");
-     UARTDoublePrint(force_size); */
-}
 int numberchangeanimationflag = 0;
 int displaynumberindextimer = 0;
 int sendtimerindex = 0;
@@ -696,9 +658,7 @@ int predisplaynumber = 0;
 void Check_Event(void){
      // UART Event Check.
      int index;
-     
-     // Accel Sensor Check
-     Check_Accel();
+
      //GPIO_PORTC_DATA = 0xf;
      //TFT_Fill_Screen(CL_BLUE);
      if(commcompleteflag)
@@ -727,14 +687,6 @@ void Check_Event(void){
      }
      // Accel Sensor Event Check
 
-
-     if( accelflag )
-     {
-        //UART_Write_Text("AccelFlagOn\r\n");
-        //numberchangeanimationflag = 1;
-        accelflag = 0;
-     }
-     
      /*
      if( tick_mm_time > 33 )
      {

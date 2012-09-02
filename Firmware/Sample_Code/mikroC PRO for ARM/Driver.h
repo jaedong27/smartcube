@@ -1,10 +1,6 @@
 #ifndef __DRIVER
 #define __DRIVER        1
 
-#include "ACCEL_driver.h"
-
-#define Color24To565(value)   (((value&0xF80000)>>8) | ((value&0x00FC00)>>5) | (value&0x00001F))
-
 extern unsigned int commcompleteflag;
 extern unsigned int commstatusflag;
 
@@ -15,6 +11,8 @@ typedef struct {
 } _tSensorStatus;
 
 extern _tSensorStatus   SensorStatus;
+
+extern unsigned long tick_10um_time = 0;
 
 void Start_Driver(void);
 void Check_Event(void);
