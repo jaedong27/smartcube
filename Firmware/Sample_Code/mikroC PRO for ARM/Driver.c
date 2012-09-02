@@ -326,19 +326,23 @@ void USART2_interrupt() iv IVT_INT_UART2 {
 void GPIOE_interrupt() iv IVT_INT_GPIOE {
   if(GPIO_PORTE_RIS & 0b10000000)
   {
-       UART2_Write('a');
+       //UART2_Write('a');
+       ReceivedIR(0);
   }
   else if(GPIO_PORTE_RIS & 0b01000000)
   {
-       UART2_Write('b');
+       //UART2_Write('b');
+       ReceivedIR(1);
   }
   else if(GPIO_PORTE_RIS & 0b00100000)
   {
-       UART2_Write('c');
+       //UART2_Write('c');
+       ReceivedIR(2);
   }
   else if(GPIO_PORTE_RIS & 0b00010000)
   {
-       UART2_Write('d');
+       //UART2_Write('d');
+       ReceivedIR(3);
   }
   //UART2_Write('2');
   GPIO_PORTE_ICR = GPIO_PORTE_RIS;

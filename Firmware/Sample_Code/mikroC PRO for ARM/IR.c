@@ -1,5 +1,6 @@
 #include "IR.h"
 #include "Driver.h"
+#include "UARTprint.h"
 
 struct {
        //현재 IR 통신하는 중인지 판단하는 Flag
@@ -125,8 +126,6 @@ void SendIRInterruptProcess()
                        }
                        
                        strEmitIRStatus[i].intindex++;
-
-
                    }
               }
               
@@ -139,9 +138,10 @@ struct {
        //현재 IR 통신 중인지 판단하는 Flag
        int CommStatus;
        int intindex;
-       int receiveddata;
+       //int receiveddata;
        unsigned long pretime;
        unsigned long time[100];
+       unsigned long receiveddata;
 } strReceievedIRStatus[4];
 
 void InitReceivedIR()
@@ -158,14 +158,60 @@ void InitReceivedIR()
 
 void ReceivedIR(int i)
 {
-     strReceievedIRStatus[i].time[strReceievedIRStatus[i].intindex] = tick_10um_time - strReceievedIRStatus[i].pretime;
-     strReceievedIRStatus[i].pretime = tick_10um_time;
-     strReceievedIRStatus[i].intindex++;
- /*
-     if(strReceievedIRStatus[i].CommStatus == 0)
+     int j;
+     unsigned long timegap;
+     if( strReceievedIRStatus[i].CommStatus == 0)
      {
-           //통신 시작함
-           strReceievedIRStatus[i].CommStatus = 1;
+         //현재 통신중이 아니었음
+         strReceievedIRStatus[i].CommStatus = 1;
+         strReceievedIRStatus[i].pretime = tick_10um_time;
      }
-     */
+     else if( strReceievedIRStatus[i].CommStatus == 1 )
+     {
+         timegap = tick_10um_time - strReceievedIRStatus[i].pretime;
+         strReceievedIRStatus[i].pretime = tick_10um_time;
+         strReceievedIRStatus[i].intindex = 0;
+         strReceievedIRStatus[i].receiveddata = 0;
+         
+         if( timegap > 98  && timegap < 105 )
+         {
+              strReceievedIRStatus[i].CommStatus = 2;
+         }
+         else
+         {
+              strReceievedIRStatus[i].CommStatus = 1;
+         }
+     }
+     else if( strReceievedIRStatus[i].CommStatus == 2 )
+     {
+         timegap = tick_10um_time - strReceievedIRStatus[i].pretime;
+         strReceievedIRStatus[i].pretime = tick_10um_time;
+         
+         if( timegap > 58  && timegap < 65 )
+         {
+
+             strReceievedIRStatus[i].receiveddata |= 1;
+         }
+         else if( timegap > 28 && timegap < 35 )
+         {
+             //strReceievedIRStatus[i].receiveddata
+         }
+         else
+         {
+              strReceievedIRStatus[i].CommStatus = 1;
+         }
+         
+         strReceievedIRStatus[i].intindex++;
+         
+         if( strReceievedIRStatus[i].intindex >= 16 )
+         {
+             strReceievedIRStatus[i].CommStatus = 0;
+             UARTLongPrint( strReceievedIRStatus[i].receiveddata );
+             UART2_Write(0x0D);
+             UART2_Write(0x0A);
+             return;
+         }
+         
+         strReceievedIRStatus[i].receiveddata = strReceievedIRStatus[i].receiveddata << 1;
+     }
 }
