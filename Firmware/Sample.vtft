@@ -14,8 +14,8 @@ object TatDiagram
   SnapGrid.Active = True
   SnapGrid.Force = True
   SnapGrid.Visible = False
-  SnapGrid.SizeX = 2.000000000000000000
-  SnapGrid.SizeY = 2.000000000000000000
+  SnapGrid.SizeX = 1.000000000000000000
+  SnapGrid.SizeY = 1.000000000000000000
   SnapGrid.Style = gsLines
   SnapGrid.SnapToRuler = True
   ShowLinkPoints = False
@@ -75,8 +75,8 @@ object TatDiagram
   CanMoveOutOfBounds = False
   PageSettings.PaperName = '320x240'
   PageSettings.PaperId = 1
-  PageSettings.PaperWidth = 127.000000000000000000
-  PageSettings.PaperHeight = 169.333333333333300000
+  PageSettings.PaperWidth = 63.500000000000000000
+  PageSettings.PaperHeight = 84.666666666666680000
   PageSettings.Orientation = dpoLandscape
   PageSettings.LeftMarginStr = '0'
   PageSettings.TopMarginStr = '0'
@@ -91,6 +91,8 @@ object TatDiagram
   BorderStyle = bsSingle
   Color = clGray
   ParentColor = False
+  ExplicitWidth = 200
+  ExplicitHeight = 200
   object ImageNum0: TDgrImage
     Left = 11.000000000000000000
     Top = 15.000000000000000000
@@ -134,10 +136,7 @@ object TatDiagram
     Shadow.HOffset = 1
     Shadow.VOffset = 0
     Shadow.Transparency = 1
-    Hint = 
-      'Double click on Image to add a handler. You can '#13#10'load picture b' +
-      'y clicking in Object Inspector or '#13#10'by right click on image->Loa' +
-      'd Picture'
+    Hint = 'ImageNum0'#13#10#13#10'Left      :     11'#13#10'Top      :     15'
     ParentShowHint = True
     Gradient.Direction = grTopBottom
     Gradient.StartColor = clWhite
@@ -6753,10 +6752,7 @@ object TatDiagram
     Shadow.HOffset = 1
     Shadow.VOffset = 0
     Shadow.Transparency = 1
-    Hint = 
-      'Double click on Image to add a handler. You can '#13#10'load picture b' +
-      'y clicking in Object Inspector or '#13#10'by right click on image->Loa' +
-      'd Picture'
+    Hint = 'ImageNum3'#13#10#13#10'Left      :     44'#13#10'Top      :     46'
     ParentShowHint = True
     Gradient.Direction = grTopBottom
     Gradient.StartColor = clWhite
@@ -11254,10 +11250,7 @@ object TatDiagram
     Shadow.HOffset = 1
     Shadow.VOffset = 0
     Shadow.Transparency = 1
-    Hint = 
-      'Double click on Image to add a handler. You can '#13#10'load picture b' +
-      'y clicking in Object Inspector or '#13#10'by right click on image->Loa' +
-      'd Picture'
+    Hint = 'ImageNum5'#13#10#13#10'Left      :     64'#13#10'Top      :     66'
     ParentShowHint = True
     Gradient.Direction = grTopBottom
     Gradient.StartColor = clWhite
@@ -13463,10 +13456,7 @@ object TatDiagram
     Shadow.HOffset = 1
     Shadow.VOffset = 0
     Shadow.Transparency = 1
-    Hint = 
-      'Double click on Image to add a handler. You can '#13#10'load picture b' +
-      'y clicking in Object Inspector or '#13#10'by right click on image->Loa' +
-      'd Picture'
+    Hint = 'ImageNum6'#13#10#13#10'Left      :     78'#13#10'Top      :     76'
     ParentShowHint = True
     Gradient.Direction = grTopBottom
     Gradient.StartColor = clWhite
@@ -26686,10 +26676,7 @@ object TatDiagram
     Shadow.HOffset = 1
     Shadow.VOffset = 0
     Shadow.Transparency = 1
-    Hint = 
-      'Double click on Image to add a handler. You can '#13#10'load picture b' +
-      'y clicking in Object Inspector or '#13#10'by right click on image->Loa' +
-      'd Picture'
+    Hint = 'multiple'#13#10#13#10'Left      :     138'#13#10'Top      :     136'
     ParentShowHint = True
     Gradient.Direction = grTopBottom
     Gradient.StartColor = clWhite
@@ -28723,10 +28710,7 @@ object TatDiagram
     Shadow.HOffset = 1
     Shadow.VOffset = 0
     Shadow.Transparency = 1
-    Hint = 
-      'Double click on Image to add a handler. You can '#13#10'load picture b' +
-      'y clicking in Object Inspector or '#13#10'by right click on image->Loa' +
-      'd Picture'
+    Hint = 'divide'#13#10#13#10'Left      :     148'#13#10'Top      :     146'
     ParentShowHint = True
     Gradient.Direction = grTopBottom
     Gradient.StartColor = clWhite
@@ -32544,6 +32528,7 @@ object TatDiagram
     Collapsed = False
   end
 end
+
 SCREEN_SECTION
 
 	ScreenName=Screen1
@@ -32683,6 +32668,7 @@ TP_ENABLE     = 1
 RSRC_FORMAT   = BINARY
 RSRC_JPEG2BMP = True
 RSRC_FILESYS  = True
+EXT_RSRC = False
 
 //FONT SPACE OPTIONS
 ONE_PIXEL_SPACE_WIDTH = True

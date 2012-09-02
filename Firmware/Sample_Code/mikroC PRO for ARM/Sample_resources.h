@@ -1,0 +1,15 @@
+#define number0_bmp 0x00000186
+#define number1_bmp 0x00008878
+#define number2_bmp 0x0000D538
+#define number3_bmp 0x00015996
+#define number4_bmp 0x0001C114
+#define number5_bmp 0x00024668
+#define number6_bmp 0x0002B8BA
+#define number7_bmp 0x00034A68
+#define number8_bmp 0x0003C64C
+#define number9_bmp 0x00044D3E
+#define plus_bmp    0x0004DEEC
+#define minus_bmp   0x000549DC
+#define mutiple_bmp 0x000567B0
+#define divide_bmp  0x0005CC5A
+#define equal_bmp   0x00064212

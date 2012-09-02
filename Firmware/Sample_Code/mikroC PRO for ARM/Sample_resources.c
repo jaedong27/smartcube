@@ -1,0 +1,15 @@
+const unsigned long number0_bmp = 0x00000186;
+const unsigned long number1_bmp = 0x00008878;
+const unsigned long number2_bmp = 0x0000D538;
+const unsigned long number3_bmp = 0x00015996;
+const unsigned long number4_bmp = 0x0001C114;
+const unsigned long number5_bmp = 0x00024668;
+const unsigned long number6_bmp = 0x0002B8BA;
+const unsigned long number7_bmp = 0x00034A68;
+const unsigned long number8_bmp = 0x0003C64C;
+const unsigned long number9_bmp = 0x00044D3E;
+const unsigned long plus_bmp    = 0x0004DEEC;
+const unsigned long minus_bmp   = 0x000549DC;
+const unsigned long mutiple_bmp = 0x000567B0;
+const unsigned long divide_bmp  = 0x0005CC5A;
+const unsigned long equal_bmp   = 0x00064212;
