@@ -602,10 +602,34 @@ void Check_TP() {
 }
 
 void Init_MCU(){
+//  GPIO_Config(&GPIO_PORTE_DATA_BITS, 0b11110000, _GPIO_DIR_OUTPUT, _GPIO_CFG_DIGITAL_ENABLE | _GPIO_CFG_DRIVE_8mA, 0);
+
+  // R Sensor
+  // This is analog to :
+  GPIO_Config(&GPIO_PORTE_DATA_BITS, 0b11110000, _GPIO_DIR_INPUT, _GPIO_CFG_DIGITAL_ENABLE, _GPIO_PINCODE_NONE);
+
+  //rising edge :
+  GPIO_PORTE_IEV = 0b11110000;
+  GPIO_PORTE_IBE = 0b00000000;
+
+  NVIC_IntEnable(IVT_INT_GPIOE);    // Enable GPIO interrupt
+
+  // interrupt on
+  GPIO_PORTE_IM = 0b11110000;
+
+  // Emition Sensor
+  GPIO_Config(&GPIO_PORTH_DATA_BITS, 0b00001111, _GPIO_DIR_OUTPUT, _GPIO_CFG_DIGITAL_ENABLE | _GPIO_CFG_DRIVE_8mA, 0);
   GPIO_Config(&GPIO_PORTD_DATA_BITS, 0b00001000, _GPIO_DIR_OUTPUT, _GPIO_CFG_DIGITAL_ENABLE | _GPIO_CFG_DRIVE_8mA, 0);
+
+  GPIO_PORTD_DEN   = 0b01101000;     //digital enable
+  GPIO_PORTD_AFSEL = 0b01100000;     // PD5 PD6 Peripheral Signal
+  //GPIO_PORTD_DR8R  = 0b00000000;     // 8mA Drive( I think it's not necessary )
+  GPIO_PORTD_PCTL  = 0x09900000;     // Spec P.1264 Table
+
   TFT_BLED = 1;
   TP_TFT_Rotate_180(0);
 }
+
 
 void Init_Ext_Mem() {
   // Initialize SPI
