@@ -6,25 +6,30 @@ Value=0
 [BUILD_TYPE]
 Value=0
 [ACTIVE_TAB]
-Value=Sample_main.c
+Value=Driver.c
 [USE_EEPROM]
 Value=0
 [EEPROM_DEFINITION]
 Value=
 [FILES]
-Count=4
+Count=5
 File0=Sample_main.c
 File1=Sample_events_code.c
 File2=Sample_driver.c
 File3=Sample_resources.c
+File4=Driver.c
 [BINARIES]
 Count=0
 [IMAGES]
 Count=0
+ActiveImageIndex=-1
 [OPENED_FILES]
-Count=2
+Count=5
 File0=Sample_main.c
 File1=Sample_events_code.c
+File2=sample_objects.h
+File3=Sample_driver.c
+File4=Driver.c
 [EEPROM]
 Count=0
 [ACTIVE_COMMENTS_FILES]
@@ -32,13 +37,18 @@ Count=0
 [OTHER_FILES]
 Count=0
 [SEARCH_PATH]
-Count=0
+Count=3
+Path0=C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for ARM\defs\
+Path1=C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for ARM\Uses\Stellaris M3\
+Path2=\\vmware-host\Shared Folders\jaedong\Desktop\SmartCubeSource\Firmware\Sample_Code\mikroC PRO for ARM\
 [HEADER_PATH]
-Count=0
+Count=1
+Path0=\\vmware-host\Shared Folders\jaedong\Desktop\SmartCubeSource\Firmware\Sample_Code\mikroC PRO for ARM\
 [HEADERS]
-Count=2
+Count=3
 File0=Sample_objects.h
 File1=Sample_resources.h
+File2=Driver.h
 [PLDS]
 Count=0
 [Useses]
@@ -55,8 +65,13 @@ File8=Mmc_FAT16_Config
 File9=Mmc_FAT16_Defs
 File10=Spi
 File11=C_Type
+[USE_HEAP]
+Value=0
+[HEAP_SIZE]
+Value=2000
 [EXPANDED NODES]
 Node1=Sources
 Node2=Header Files
-Node3=Output Files
-Count=3
+Count=2
+[PROGRAMMER_OPTIONS]
+Value=JTAG
