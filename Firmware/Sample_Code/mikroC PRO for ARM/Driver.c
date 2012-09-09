@@ -323,37 +323,39 @@ void USART2_interrupt() iv IVT_INT_UART2 {
   UART_ICR_RXIC_UART2_ICR_bit = 1;                 //disable UART0 status clear
 }
 
+// 0 :
+
 void GPIOE_interrupt() iv IVT_INT_GPIOE {
   if(GPIO_PORTE_RIS & 0b10000000)
   {
        //UART2_Write('a');
-       ReceivedIR(0);
+       ReceivedIR(EAST);
   }
   else if(GPIO_PORTE_RIS & 0b01000000)
   {
        //UART2_Write('b');
-       ReceivedIR(1);
+       ReceivedIR(NORTH);
   }
   else if(GPIO_PORTE_RIS & 0b00100000)
   {
        //UART2_Write('c');
-       ReceivedIR(2);
+       ReceivedIR(WEST);
   }
   else if(GPIO_PORTE_RIS & 0b00010000)
   {
        //UART2_Write('d');
-       ReceivedIR(3);
+       ReceivedIR(SOUTH);
   }
   //UART2_Write('2');
   GPIO_PORTE_ICR = GPIO_PORTE_RIS;
 }
 
 long tick_mm_time = 0;
-unsigned long tick_10um_time = 0;
+unsigned long tick_10u_time = 0;
 void Timer0A_interrupt() iv IVT_INT_TIMER0A {
   TIMER_ICR_TATOCINT_bit = 1;              // Clear time-out timer A interrupt
   //GPIO_PORTJ_DATA = ~GPIO_PORTJ_DATA;      // Toggle PORTJ led's
-  tick_10um_time++;
+  tick_10u_time++;
   SendIRInterruptProcess();
 }
 
@@ -454,44 +456,44 @@ void UARTStatusWall()
     //TFT_Ext_Image( 120 - ((local_image->width)>>1), 160-((local_image->height)>>1), local_image->Picture_Name, local_image->Picture_Ratio );
 
     //if(
-    if( SensorStatus.status[TOP] )
+    if( SensorStatus.status[NORTH] )
     {
-        UART_WRITE(0x30);
+        UART2_WRITE(0x30);
     }
     else
     {
-        UART_WRITE(0x31);
+        UART2_WRITE(0x31);
     }
     
-    if( SensorStatus.status[RIGHT] )
+    if( SensorStatus.status[EAST] )
     {
-        UART_WRITE(0x30);
+        UART2_WRITE(0x30);
     }
     else
     {
-        UART_WRITE(0x31);
+        UART2_WRITE(0x31);
     }
 
-    if( SensorStatus.status[BOTTOM] )
+    if( SensorStatus.status[SOUTH] )
     {
-        UART_WRITE(0x30);
+        UART2_WRITE(0x30);
     }
     else
     {
-        UART_WRITE(0x31);
+        UART2_WRITE(0x31);
     }
 
-    if( SensorStatus.status[LEFT] )
+    if( SensorStatus.status[WEST] )
     {
-        UART_WRITE(0x30);
+        UART2_WRITE(0x30);
     }
     else
     {
-        UART_WRITE(0x31);
+        UART2_WRITE(0x31);
     }
 
-    UART_WRITE(0x0d);
-    UART_WRITE(0x0a);
+    UART2_WRITE(0x0d);
+    UART2_WRITE(0x0a);
 }
 
 #define COLOR_BLACK   TFT_RGBToColor16bit(0x47,0x45,0x44)
@@ -517,7 +519,7 @@ void StatusWall()
     TFT_Rectangle(0,320-WALLSIZE,WALLSIZE,320);
     TFT_Rectangle(240-WALLSIZE,320-WALLSIZE,240,320);
 
-    if( SensorStatus.status[TOP] )
+    if( SensorStatus.status[NORTH] )
     {
         TFT_Set_Pen(CL_BLACK, 1);
         TFT_Set_Brush(1,CL_BLACK, 0,LEFT_TO_RIGHT,CL_BLACK,CL_BLACK);
@@ -531,7 +533,7 @@ void StatusWall()
         thenumberoftouchedarea++;
     }
 
-    if( SensorStatus.status[RIGHT] )
+    if( SensorStatus.status[EAST] )
     {
         TFT_Set_Pen(COLOR_BLACK, 1);
         TFT_Set_Brush(1,CL_BLACK, 0,LEFT_TO_RIGHT,CL_BLACK,CL_BLACK);
@@ -545,7 +547,7 @@ void StatusWall()
         thenumberoftouchedarea++;
     }
 
-    if( SensorStatus.status[BOTTOM] )
+    if( SensorStatus.status[SOUTH] )
     {
         TFT_Set_Pen(CL_BLACK, 1);
         TFT_Set_Brush(1,CL_BLACK, 0,LEFT_TO_RIGHT,CL_BLACK,CL_BLACK);
@@ -559,7 +561,7 @@ void StatusWall()
         thenumberoftouchedarea++;
     }
 
-    if( SensorStatus.status[LEFT] )
+    if( SensorStatus.status[WEST] )
     {
         TFT_Set_Pen(CL_BLACK, 1);
         TFT_Set_Brush(1,CL_BLACK, 0,LEFT_TO_RIGHT,CL_BLACK,CL_BLACK);
@@ -659,6 +661,7 @@ int numberchangeanimationflag = 0;
 int displaynumberindextimer = 0;
 int sendtimerindex = 0;
 int predisplaynumber = 0;
+unsigned long preSendIRtick = 0;
 void Check_Event(void){
      // UART Event Check.
      int index;
@@ -669,8 +672,6 @@ void Check_Event(void){
      {
         // Comm A Packet Received
         commcompleteflag = 0;
-        UART0_Write_Text("2");
-        UART0_Write(0x0d);
      }
      
      if(commstatusflag)
@@ -678,7 +679,7 @@ void Check_Event(void){
         //Status A Packet Received
         //UARTStatusWall();
         StatusWall();
-        if(predisplaynumber != CommStructData.lm_value)
+        /*if(predisplaynumber != CommStructData.lm_value)
         {
             Display_Number(CommStructData.lm_value);
             predisplaynumber = CommStructData.lm_value;
@@ -686,22 +687,30 @@ void Check_Event(void){
         if(CommStructData.lm_status == 2)
         {
             SendPacketData();
-        }
+        }*/
         commstatusflag = 0;
      }
-     // Accel Sensor Event Check
 
-     /*
-     if( tick_mm_time > 33 )
+     if( tick_1m_time >= (preSendIRtick + 100) )
      {
-          tick_mm_time = 0;
-          sendtimerindex++;
-          if(sendtimerindex>10)
-          {
-               //Send Data every 330ms
-               SendPacketData();
-               sendtimerindex = 0;
-          }
+       //UART2_Write_Text("test");
+       preSendIRtick = tick_1m_time;
+       for(index = 0 ; index < 4 ; index++ )
+       {
+        if( strReceievedIRStatus[index].receivedtick + 300 < tick_1m_time )
+        {
+       //     UART2_Write('d');
+            //time out
+            SendIR(index, BOARDID, 0);
+            SensorStatus.status[index] = 0;
+        }
+        else
+        {
+            SendIR(index, BOARDID, (strReceievedIRStatus[index].tdata >> 8) & 0xff );
+        }
+       }
+
+        StatusWall();
+       //UARTStatusWall();
      }
-     */
 }

@@ -12389,6 +12389,7 @@ plus_bmp
 port
 predata
 predisplaynumber
+presendirtick
 pressedobject
 pressedobjecttype
 processpacket
@@ -15431,7 +15432,7 @@ tft_write_data
 tft_write_data_ptr
 tft_write_text
 tft_write_text_return_pos
-tick_10um_time
+tick_10u_time
 tick_mm_time
 timer_cfg
 timer_cfg0

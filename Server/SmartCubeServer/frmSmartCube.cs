@@ -46,6 +46,20 @@ namespace SmartCubeServer
             //Console.WriteLine(person2.Age);
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (serialPort.IsOpen)
+            {
+                System.Diagnostics.Debug.WriteLine("Already Open");
+            }
+            else
+            {
+                serialPort.PortName = "COM5";
+                serialPort.Open();
+                System.Diagnostics.Debug.WriteLine("Open");
+            }
+        }
+
         
     }
 }

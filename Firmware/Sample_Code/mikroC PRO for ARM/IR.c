@@ -22,7 +22,7 @@ void SendIR(int direction, unsigned short data1, unsigned short data2)
      //현재 데이타 보내는 중이면 보내지 아니함.
      if(strEmitIRStatus[direction].Status == 1) return;
 
-     strEmitIRStatus[direction].pretime = tick_10um_time;
+     strEmitIRStatus[direction].pretime = tick_10u_time;
      strEmitIRStatus[direction].Status = 1;
      strEmitIRStatus[direction].intindex = 0;
      strEmitIRStatus[direction].sendeddata = ((data1<<8) | data2);
@@ -46,7 +46,7 @@ void SendIRInterruptProcess()
               {
                    //현재 StartPacket 전송중
                    //emit ON 상태
-                   if( tick_10um_time - strEmitIRStatus[i].pretime > 50 )
+                   if( tick_10u_time - strEmitIRStatus[i].pretime > 50 )
                    {
                        //UART2_Write('1');
                        //시간을 다 채움
@@ -56,7 +56,7 @@ void SendIRInterruptProcess()
                        //status off
                        strEmitIRStatus[i].Status = 2;
                        //시간 초기화
-                       strEmitIRStatus[i].pretime = tick_10um_time;
+                       strEmitIRStatus[i].pretime = tick_10u_time;
                        /*
                        if( (strEmitIRStatus[i].sendeddata>>15) & 0x01 )
                        {
@@ -75,7 +75,7 @@ void SendIRInterruptProcess()
               else if(strEmitIRStatus[i].Status == 2)
               {
                    //emit Off 상태
-                   if( tick_10um_time - strEmitIRStatus[i].pretime > strEmitIRStatus[i].timegap )
+                   if( tick_10u_time - strEmitIRStatus[i].pretime > strEmitIRStatus[i].timegap )
                    {
 
                        //UART2_Write('2');
@@ -87,13 +87,13 @@ void SendIRInterruptProcess()
                        strEmitIRStatus[i].Status = 3;
 
                        //시간 초기화
-                       strEmitIRStatus[i].pretime = tick_10um_time;
+                       strEmitIRStatus[i].pretime = tick_10u_time;
                    }
                    
               }else if(strEmitIRStatus[i].Status == 3)
               {
                    //emit ON 상태 Data 보내는중
-                   if( tick_10um_time - strEmitIRStatus[i].pretime > 10 )
+                   if( tick_10u_time - strEmitIRStatus[i].pretime > 10 )
                    {
                        //UART2_Write('3');
                        // 시간 다 채움
@@ -104,7 +104,7 @@ void SendIRInterruptProcess()
                        strEmitIRStatus[i].Status = 2;
 
                        //시간 초기화
-                       strEmitIRStatus[i].pretime = tick_10um_time;
+                       strEmitIRStatus[i].pretime = tick_10u_time;
 
                        //if( strEmitIRStatus[i].intindex >= 16 )
 
@@ -142,6 +142,8 @@ struct {
        unsigned long pretime;
        unsigned long time[100];
        unsigned long receiveddata;
+       unsigned long tdata;
+       unsigned long receivedtick;
 } strReceievedIRStatus[4];
 
 void InitReceivedIR()
@@ -164,12 +166,12 @@ void ReceivedIR(int i)
      {
          //현재 통신중이 아니었음
          strReceievedIRStatus[i].CommStatus = 1;
-         strReceievedIRStatus[i].pretime = tick_10um_time;
+         strReceievedIRStatus[i].pretime = tick_10u_time;
      }
      else if( strReceievedIRStatus[i].CommStatus == 1 )
      {
-         timegap = tick_10um_time - strReceievedIRStatus[i].pretime;
-         strReceievedIRStatus[i].pretime = tick_10um_time;
+         timegap = tick_10u_time - strReceievedIRStatus[i].pretime;
+         strReceievedIRStatus[i].pretime = tick_10u_time;
          strReceievedIRStatus[i].intindex = 0;
          strReceievedIRStatus[i].receiveddata = 0;
          
@@ -184,8 +186,8 @@ void ReceivedIR(int i)
      }
      else if( strReceievedIRStatus[i].CommStatus == 2 )
      {
-         timegap = tick_10um_time - strReceievedIRStatus[i].pretime;
-         strReceievedIRStatus[i].pretime = tick_10um_time;
+         timegap = tick_10u_time - strReceievedIRStatus[i].pretime;
+         strReceievedIRStatus[i].pretime = tick_10u_time;
          
          if( timegap > 58  && timegap < 65 )
          {
@@ -206,9 +208,29 @@ void ReceivedIR(int i)
          if( strReceievedIRStatus[i].intindex >= 16 )
          {
              strReceievedIRStatus[i].CommStatus = 0;
-             UARTLongPrint( strReceievedIRStatus[i].receiveddata );
+             strReceievedIRStatus[i].tdata = strReceievedIRStatus[i].receiveddata;
+             strReceievedIRStatus[i].receivedtick = tick_1m_time;
+             
+
+             /*UARTIntegerPrint( i );
+             UART2_Write(0x20);
+             UARTLongHexPrint( strReceievedIRStatus[i].tdata );
              UART2_Write(0x0D);
              UART2_Write(0x0A);
+             */
+             
+             //여기서 벽 정보 판단
+             if( (unsigned int)(strReceievedIRStatus[i].tdata & 0xff) == (unsigned int)BOARDID )
+             {
+               /*UART2_Write('a');
+               UARTIntegerPrint( i );
+               UART2_Write(0x0D);
+               UART2_Write(0x0A);*/
+               //UART2_Write('d');
+               SensorStatus.status[i] = 1;
+               SensorStatus.neighborid[i] = (strReceievedIRStatus[i].tdata >> 8) & 0xff;
+             }
+             
              return;
          }
          

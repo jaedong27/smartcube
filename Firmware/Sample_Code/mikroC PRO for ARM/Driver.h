@@ -1,6 +1,9 @@
 #ifndef __DRIVER
 #define __DRIVER        1
 
+
+#define BOARDID             0xA4
+
 extern unsigned int commcompleteflag;
 extern unsigned int commstatusflag;
 
@@ -12,7 +15,8 @@ typedef struct {
 
 extern _tSensorStatus   SensorStatus;
 
-extern unsigned long tick_10um_time = 0;
+extern unsigned long tick_10u_time = 0;
+#define tick_1m_time (unsigned long)(tick_10u_time / 100)
 
 void Start_Driver(void);
 void Check_Event(void);

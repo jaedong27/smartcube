@@ -24,18 +24,9 @@ void main() {
 
   Start_TP();
   Start_Driver();
-  while(1)
-  {
-   SendIR(0,0xff,0x00);
-   SendIR(1,0xf0,0xf0);
-   SendIR(2,0x0f,0x0f);
-   SendIR(3,0xa0,0x0a);
-   delay_ms(1000);
-  }
+
   while (1) {
     Check_TP();
-    
-
+    Check_Event();
   }
-
 }
