@@ -17,15 +17,19 @@
  */
 
 #include "Sample_objects.h"
+#include "Sample_resources.h"
 #include "Driver.h"
 #include "IR.h"
 
 void main() {
 
-  Start_TP();
   Start_Driver();
+  Start_TP();
+
+  TFT_Fill_Screen(0);
 
   while (1) {
+
     Check_TP();
     Check_Event();
   }

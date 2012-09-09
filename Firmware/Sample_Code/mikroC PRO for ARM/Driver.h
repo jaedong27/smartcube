@@ -2,10 +2,16 @@
 #define __DRIVER        1
 
 
-#define BOARDID             0xA4
+#define BOARDID             0x1
 
 extern unsigned int commcompleteflag;
 extern unsigned int commstatusflag;
+
+extern int serverrequestwalldataflag;
+
+extern int displaypictureflag;
+extern int displaypictureindex;
+extern int getwallflag;
 
 typedef struct {
        unsigned int avrid;

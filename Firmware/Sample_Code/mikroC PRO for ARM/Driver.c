@@ -72,9 +72,9 @@ void Start_Driver(void) {
 
      // Timer0 init
 
-      GPIO_Digital_Output(&GPIO_PORTJ, _GPIO_PINMASK_ALL);  // Enable digital output on PORTJ
+      /*GPIO_Digital_Output(&GPIO_PORTJ, _GPIO_PINMASK_ALL);  // Enable digital output on PORTJ
       GPIO_PORTJ_DATA = 0;
-
+      */
       SYSCTL_RCGC1_TIMER0_bit = 1;        // Enable clock gating for timer module 0
 
       //EnableInterrupts();                 // Enables the processor interrupt.
@@ -102,61 +102,15 @@ void Start_Driver(void) {
      UART_LCRH_FEN_UART2_LCRH_bit = 0;
      NVIC_IntEnable(IVT_INT_UART2);    // Enable UART2 interrupt
 
-     UART2_Write_Text("Test Sample");
+     //UART2_Write_Text("Test Sample");
 
      EnableInterrupts();               // Enables the processor interrupt.
 
      //initReceivePacket();
 }
-/*
-void sendPacket(unsigned short major, unsigned short minor, unsigned int length, unsigned short* tdata)
-{
-     unsigned short tempdata[255];
-     unsigned int index;
-     unsigned int checksum = 0;
-     tempdata[0] = 0x55;
-     tempdata[1] = major;
-     tempdata[2] = minor;
-     tempdata[3] = (length >> 8) & 0xff;
-     tempdata[4] = (length & 0xff);
-     for(index = 0; index < length ; index++)
-     {
-               tempdata[5 + index] = tdata[index];
-               //make check sum
-               checksum += tdata[index];
-     }
-
-     tempdata[5 + length] = (unsigned short)(checksum & 0xff);
-     tempdata[6 + length] = 0x0a;
-     
-     //DLE Format Start
-     UART0_Write(0x01);
-     UART0_Write(0x02);
-
-     for(index = 0 ; index < length + 7; index++)
-     {
-               UART0_Write(tempdata[index]);
-               if(tempdata[index] == 0x01)
-               {
-                     UART0_Write(0x01);
-               }
-     }
-
-     //DLE Format End
-     UART0_Write(0x01);
-     UART0_Write(0x03);
-}
-*/
 
 void UARTStatusWall()
 {
-    //TImage *local_image;
-    //local_image = CurrentScreen->Images[3];
-    //TFT_Fill_Screen(CL_WHITE);
-    //TFT_Ext_Image(AImage->Left, AImage->Top, AImage->Picture_Name, AImage->Picture_Ratio);
-    //TFT_Ext_Image( 120 - ((local_image->width)>>1), 160-((local_image->height)>>1), local_image->Picture_Name, local_image->Picture_Ratio );
-
-    //if(
     if( SensorStatus.status[NORTH] )
     {
         UART2_WRITE(0x30);
@@ -197,10 +151,6 @@ void UARTStatusWall()
     UART2_WRITE(0x0a);
 }
 
-#define COLOR_BLACK   TFT_RGBToColor16bit(0x47,0x45,0x44)
-#define COLOR_YELLOW  TFT_RGBToColor16bit(0xFF,0xE0,0x5C)
-#define COLOR_ORANGE  TFT_RGBToColor16bit(0xFF,0xA5,0x56)
-
 #define WALLSIZE     20
 void StatusWall()
 {
@@ -236,7 +186,7 @@ void StatusWall()
 
     if( SensorStatus.status[EAST] )
     {
-        TFT_Set_Pen(COLOR_BLACK, 1);
+        TFT_Set_Pen(CL_BLACK, 1);
         TFT_Set_Brush(1,CL_BLACK, 0,LEFT_TO_RIGHT,CL_BLACK,CL_BLACK);
         TFT_Rectangle(240-WALLSIZE, WALLSIZE, 240 ,320-WALLSIZE);
     }
@@ -302,7 +252,6 @@ void StatusWall()
 
 void Display_Number(char displaynumberindex)
 {
-if(displaynumberindex == 13) return;
             TFT_Set_Pen(CL_BLACK, 1);
             TFT_Set_Brush(1,CL_BLACK, 0,LEFT_TO_RIGHT,CL_BLACK,CL_BLACK);
             TFT_Rectangle(120 - 60, 160 - 80, 120 + 60, 160 + 80);
@@ -344,13 +293,13 @@ if(displaynumberindex == 13) return;
                            case 12:
                              TFT_Ext_Image(120 - (minus.Width >> 1), 160 - (minus.Height >> 1), minus_bmp, 1);
                            break;
-                           case 14:
+                           case 13:
                              TFT_Ext_Image(120 - (multiple.Width >> 1), 160 - (multiple.Height >> 1), multiple_bmp, 1);
                            break;
-                           case 15:
+                           case 14:
                              TFT_Ext_Image(120 - (divide.Width >> 1), 160 - (divide.Height >> 1), divide_bmp, 1);
                            break;
-                           case 16:
+                           case 15:
                              TFT_Ext_Image(120 - (equal.Width >> 1), 160 - (equal.Height >> 1), equal_bmp, 1);
                            break;
                            
@@ -363,6 +312,13 @@ int displaynumberindextimer = 0;
 int sendtimerindex = 0;
 int predisplaynumber = 0;
 unsigned long preSendIRtick = 0;
+
+int displaypictureflag = 0;
+int displaypictureindex;
+int getwallflag = 0;
+
+int serverrequestwalldataflag = 0;
+
 void Check_Event(void){
      // UART Event Check.
      int index;
@@ -378,18 +334,25 @@ void Check_Event(void){
      if(commstatusflag)
      {
         //Status A Packet Received
-        //UARTStatusWall();
-        StatusWall();
-        /*if(predisplaynumber != CommStructData.lm_value)
-        {
-            Display_Number(CommStructData.lm_value);
-            predisplaynumber = CommStructData.lm_value;
-        }
-        if(CommStructData.lm_status == 2)
-        {
-            SendPacketData();
-        }*/
         commstatusflag = 0;
+     }
+     
+     if( serverrequestwalldataflag )
+     {
+         sendtoServerWalldata();
+         serverrequestwalldataflag = 0;
+     }
+     
+     if( displaypictureflag )
+     {
+         displaypictureflag = 0;
+         Display_Number(displaypictureindex);
+     }
+     
+     if( getwallflag )
+     {
+         getwallflag = 0;
+         sendStatusData();
      }
 
      if( tick_1m_time >= (preSendIRtick + 100) )
@@ -410,8 +373,9 @@ void Check_Event(void){
             SendIR(index, BOARDID, (strReceievedIRStatus[index].tdata >> 8) & 0xff );
         }
        }
-
-        StatusWall();
-       //UARTStatusWall();
+       
+       RequestWallData();
+       
+       StatusWall();
      }
 }

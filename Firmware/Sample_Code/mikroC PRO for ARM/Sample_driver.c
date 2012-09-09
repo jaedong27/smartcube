@@ -651,15 +651,14 @@ void Start_TP() {
   Init_Ext_Mem();
 
   InitializeTouchPanel();
-  /*
-  Delay_ms(1000);
+
+  /*Delay_ms(1000);
   TFT_Fill_Screen(0);
   Calibrate();
   TFT_Fill_Screen(0);
-
+  */
   InitializeObjects();
   display_width = Screen1.Width;
   display_height = Screen1.Height;
   DrawScreen(&Screen1);
-  */
 }

@@ -1,5 +1,11 @@
 #include "UARTprint.h"
 
+void UART_WRITE_HEX(unsigned int temp)
+{
+     UART_WRITE(((temp & 0xf0)>>4) + 0x30);
+     UART_WRITE((temp & 0x0f) + 0x30);
+}
+
 void UARTDoublePrint(double value)
 {
      char temp[30];
