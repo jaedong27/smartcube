@@ -19,8 +19,7 @@ void USART0_interrupt() iv IVT_INT_UART0 {
 void USART2_interrupt() iv IVT_INT_UART2 {
   unsigned tdata;
   tdata = UART2_Read();
-  serverrequestwalldataflag = 1;
-  //DLE_RecvData(tdata);
+  receiveServerPacket(tdata);
   UART_ICR_RXIC_UART2_ICR_bit = 1;                 //disable UART0 status clear
 }
 
@@ -313,11 +312,14 @@ int sendtimerindex = 0;
 int predisplaynumber = 0;
 unsigned long preSendIRtick = 0;
 
+unsigned long preSendWallRequesttick = 0;
+
 int displaypictureflag = 0;
 int displaypictureindex;
 int getwallflag = 0;
 
 int serverrequestwalldataflag = 0;
+int serverrequestpictureflag = 0;
 
 void Check_Event(void){
      // UART Event Check.
@@ -341,6 +343,19 @@ void Check_Event(void){
      {
          sendtoServerWalldata();
          serverrequestwalldataflag = 0;
+     }
+     
+     if( serverrequestpictureflag )
+     {
+         //UART2_Write_Text("J");
+         if ( serverrequestpictureboardid == 1){
+             Display_Number( serverrequestpictureindex );
+         }
+         else
+         {
+             RequestSetData(serverrequestpictureboardid,  serverrequestpictureindex);
+         }
+         serverrequestpictureflag = 0;
      }
      
      if( displaypictureflag )
@@ -373,9 +388,14 @@ void Check_Event(void){
             SendIR(index, BOARDID, (strReceievedIRStatus[index].tdata >> 8) & 0xff );
         }
        }
-       
-       RequestWallData();
-       
+       //RequestWallData();
        StatusWall();
+     }
+     
+     if( tick_1m_time >= (preSendWallRequesttick + 300) )
+     {
+       //UART2_Write_Text("test");
+       preSendWallRequesttick = tick_1m_time;
+       RequestWallData();
      }
 }

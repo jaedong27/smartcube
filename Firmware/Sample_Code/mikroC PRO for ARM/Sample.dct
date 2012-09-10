@@ -2599,7 +2599,6 @@ adc1_sspribits
 adc1_ustat
 adc1_ustatbits
 allboardstatus
-analyzepacket
 asoneblock
 asprevdcvalue
 avrid
@@ -4526,6 +4525,7 @@ comp_acstat2_oval
 comp_acstat2_oval_bit
 comp_acstat2bits
 completepacket
+completeserverpacket
 config
 cpu_apsr
 cpu_basepri
@@ -9459,6 +9459,7 @@ init_mcu
 initemitir
 initreceivedir
 initreceivepacket
+initserverreceivepacket
 inttohex
 inttostr
 inttostrwithzeros
@@ -12422,6 +12423,7 @@ port
 predata
 predisplaynumber
 presendirtick
+presendwallrequesttick
 pressedobject
 pressedobjecttype
 pwcurrenthuffsymstarttable
@@ -13885,6 +13887,7 @@ r8
 r9
 receivedir
 receivepacket
+receiveserverpacket
 requestsetdata
 requestwalldata
 res_file_size
@@ -13901,6 +13904,13 @@ sendtimerindex
 sendtoserverdledata
 sendtoserverwalldata
 sensorstatus
+servercommdata
+servercommdataindex
+servercommstatus
+serverpredata
+serverrequestpictureboardid
+serverrequestpictureflag
+serverrequestpictureindex
 serverrequestwalldataflag
 setpllrcc
 setpllrcc2

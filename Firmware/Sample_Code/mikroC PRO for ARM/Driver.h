@@ -5,9 +5,12 @@
 #define BOARDID             0x1
 
 extern unsigned int commcompleteflag;
+extern unsigned int servercommcompleteflag;
 extern unsigned int commstatusflag;
 
 extern int serverrequestwalldataflag;
+extern int serverrequestpictureflag;
+
 
 extern int displaypictureflag;
 extern int displaypictureindex;
