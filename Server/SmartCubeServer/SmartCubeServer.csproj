@@ -36,6 +36,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -55,7 +56,9 @@
     <Compile Include="ObjectSerializer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SerialPortDriver.cs" />
     <Compile Include="SimpleHttpServer.cs" />
+    <Compile Include="SmartCubeHttpServer.cs" />
     <Compile Include="SmartCubeStatus.cs" />
     <EmbeddedResource Include="frmSmartCube.resx">
       <DependentUpon>frmSmartCube.cs</DependentUpon>

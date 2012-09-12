@@ -13,6 +13,9 @@ using System.Xml;
 using SmartCubeServer;
 using System.Xml.Serialization;
 
+using System.Runtime.Serialization.Json;
+using System.IO;
+
 namespace SmartCubeServer
 {
     public partial class frmSmartCube : Form
@@ -24,15 +27,20 @@ namespace SmartCubeServer
 
         private void frmSmartCube_Load(object sender, EventArgs e)
         {
+
             //Server Start
-            HttpServer httpServer;
+            /*HttpServer httpServer;
             httpServer = new MyHttpServer(8080);
+            Thread thread = new Thread(new ThreadStart(httpServer.listen));
+            thread.Start();*/
+
+            SmartCubeHttpServer httpServer;
+            httpServer = new SmartCubeHttpServer(8080);
             Thread thread = new Thread(new ThreadStart(httpServer.listen));
             thread.Start();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
+        /*
             //webBrowser.Navigate("http://localhost:8080");
             SmartCubeStatus vcube = new SmartCubeStatus();
             vcube.length = 3;
@@ -44,22 +52,37 @@ namespace SmartCubeServer
             // XMLNode 객체를 Person 객체로 변환
             //Person person2 = (Person)RKZSerializer.DeserializeObject(xmlPersion, typeof(Person));
             //Console.WriteLine(person2.Age);
+             */
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            webBrowser.Navigate("\\\\vmware-host\\Shared Folders\\jaedong\\Desktop\\SmartCubeSource\\Application\\Test.html");
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (serialPort.IsOpen)
-            {
-                System.Diagnostics.Debug.WriteLine("Already Open");
-            }
-            else
-            {
-                serialPort.PortName = "COM5";
-                serialPort.Open();
-                System.Diagnostics.Debug.WriteLine("Open");
-            }
-        }
+            //webBrowser.Navigate("http://localhost:8080");
+            /*SmartCubeStatus vcube = new SmartCubeStatus();
+            vcube.length = 3;
+            // Person 객체를 XMLNode 객체로 변환
+            XmlNode xmlPersion = ObjectSerializer.SerializeObject(vcube, typeof(SmartCubeStatus));
+            //Console.WriteLine(xmlPersion.OuterXml);
+            System.Diagnostics.Debug.WriteLine(xmlPersion.OuterXml);
 
+            // XMLNode 객체를 Person 객체로 변환
+            //SmartCubeStatus person2 = (Person)RKZSerializer.DeserializeObject(xmlPersion, typeof(SmartCubeStatus));
+            //System.Diagnostics.Debug.WriteLine(person2.Age);
+            */
+            
+
+            
+        }
         
+        [Serializable]
+        internal class Person
+        {
+            internal string name;
+            internal int age;
+        }
     }
 }

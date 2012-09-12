@@ -157,7 +157,16 @@ namespace Bend.Util {
 
         public void writeSuccess() {
             outputStream.WriteLine("HTTP/1.0 200 OK");            
-            outputStream.WriteLine("Content-Type: application/xml");
+            outputStream.WriteLine("Content-Type: text/html");
+            outputStream.WriteLine("Connection: close");
+            outputStream.WriteLine("charset: utf-8");
+            outputStream.WriteLine("");
+        }
+
+        public void writeJSONSuccess()
+        {
+            outputStream.WriteLine("HTTP/1.0 200 OK");
+            outputStream.WriteLine("Content-Type: jsonp");
             outputStream.WriteLine("Connection: close");
             outputStream.WriteLine("charset: utf-8");
             outputStream.WriteLine("");

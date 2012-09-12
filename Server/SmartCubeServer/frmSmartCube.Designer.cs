@@ -28,10 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.webBrowser = new System.Windows.Forms.WebBrowser();
             this.button1 = new System.Windows.Forms.Button();
-            this.serialPort = new System.IO.Ports.SerialPort(this.components);
             this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -53,10 +51,6 @@
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // serialPort
-            // 
-            this.serialPort.BaudRate = 115200;
             // 
             // button2
             // 
@@ -87,7 +81,6 @@
 
         private System.Windows.Forms.WebBrowser webBrowser;
         private System.Windows.Forms.Button button1;
-        private System.IO.Ports.SerialPort serialPort;
         private System.Windows.Forms.Button button2;
     }
 }
