@@ -1,0 +1,11 @@
+C:\Users\jaedong\Documents\Visual Studio 2010\Projects\test\WindowsApplication2\WindowsApplication2\bin\Debug\WindowsApplication2.exe
+C:\Users\jaedong\Documents\Visual Studio 2010\Projects\test\WindowsApplication2\WindowsApplication2\bin\Debug\WindowsApplication2.pdb
+C:\Users\jaedong\Documents\Visual Studio 2010\Projects\test\WindowsApplication2\WindowsApplication2\bin\Debug\WindowsApplication2.xml
+C:\Users\jaedong\Documents\Visual Studio 2010\Projects\test\WindowsApplication2\WindowsApplication2\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\jaedong\Documents\Visual Studio 2010\Projects\test\WindowsApplication2\WindowsApplication2\obj\x86\Debug\WindowsApplication2.Resources.resources
+C:\Users\jaedong\Documents\Visual Studio 2010\Projects\test\WindowsApplication2\WindowsApplication2\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\jaedong\Documents\Visual Studio 2010\Projects\test\WindowsApplication2\WindowsApplication2\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\jaedong\Documents\Visual Studio 2010\Projects\test\WindowsApplication2\WindowsApplication2\obj\x86\Debug\WindowsApplication2.exe
+C:\Users\jaedong\Documents\Visual Studio 2010\Projects\test\WindowsApplication2\WindowsApplication2\obj\x86\Debug\WindowsApplication2.xml
+C:\Users\jaedong\Documents\Visual Studio 2010\Projects\test\WindowsApplication2\WindowsApplication2\obj\x86\Debug\WindowsApplication2.pdb
+C:\Users\jaedong\Documents\Visual Studio 2010\Projects\test\WindowsApplication2\WindowsApplication2\obj\x86\Debug\WindowsApplication2.frmMain.resources
