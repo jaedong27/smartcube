@@ -147,10 +147,36 @@ void Calibrate() {
   TImage               ImageNum9;
   TImage               plus;
   TImage               minus;
-  TImage               multiple;
   TImage               divide;
   TImage               equal;
-  TImage                 * const code Screen1_Images[15]=
+  TImage               multiple;
+  TImage               alphaa;
+  TImage               alphab;
+  TImage               alphac;
+  TImage               alphad;
+  TImage               alphae;
+  TImage               alphaf;
+  TImage               alphag;
+  TImage               alphah;
+  TImage               alphai;
+  TImage               alphaj;
+  TImage               alphak;
+  TImage               alphal;
+  TImage               alpham;
+  TImage               alphan;
+  TImage               alphao;
+  TImage               alphap;
+  TImage               alphaq;
+  TImage               alphar;
+  TImage               alphas;
+  TImage               alphat;
+  TImage               alphau;
+  TImage               alphav;
+  TImage               alphaw;
+  TImage               alphax;
+  TImage               alphay;
+  TImage               alphaz;
+  TImage                 * const code Screen1_Images[41]=
          {
          &ImageNum0,           
          &ImageNum1,           
@@ -164,9 +190,35 @@ void Calibrate() {
          &ImageNum9,           
          &plus,                
          &minus,               
-         &multiple,            
          &divide,              
-         &equal                
+         &equal,               
+         &multiple,            
+         &alphaa,              
+         &alphab,              
+         &alphac,              
+         &alphad,              
+         &alphae,              
+         &alphaf,              
+         &alphag,              
+         &alphah,              
+         &alphai,              
+         &alphaj,              
+         &alphak,              
+         &alphal,              
+         &alpham,              
+         &alphan,              
+         &alphao,              
+         &alphap,              
+         &alphaq,              
+         &alphar,              
+         &alphas,              
+         &alphat,              
+         &alphau,              
+         &alphav,              
+         &alphaw,              
+         &alphax,              
+         &alphay,              
+         &alphaz               
          };
 
 
@@ -176,9 +228,9 @@ static void InitializeObjects() {
   Screen1.Color                     = 0x8410;
   Screen1.Width                     = 240;
   Screen1.Height                    = 320;
-  Screen1.ImagesCount               = 15;
+  Screen1.ImagesCount               = 41;
   Screen1.Images                    = Screen1_Images;
-  Screen1.ObjectsCount              = 15;
+  Screen1.ObjectsCount              = 41;
 
 
   ImageNum0.OwnerScreen     = &Screen1;
@@ -373,24 +425,8 @@ static void InitializeObjects() {
   minus.OnClickPtr      = 0;
   minus.OnPressPtr      = 0;
 
-  multiple.OwnerScreen     = &Screen1;
-  multiple.Order          = 12;
-  multiple.Left           = 138;
-  multiple.Top            = 136;
-  multiple.Width          = 114;
-  multiple.Height         = 113;
-  multiple.Picture_Type   = 0;
-  multiple.Picture_Ratio  = 1;
-  multiple.Picture_Name   = multiple_bmp;
-  multiple.Visible        = 0;
-  multiple.Active         = 1;
-  multiple.OnUpPtr         = 0;
-  multiple.OnDownPtr       = 0;
-  multiple.OnClickPtr      = 0;
-  multiple.OnPressPtr      = 0;
-
   divide.OwnerScreen     = &Screen1;
-  divide.Order          = 13;
+  divide.Order          = 12;
   divide.Left           = 148;
   divide.Top            = 146;
   divide.Width          = 115;
@@ -406,7 +442,7 @@ static void InitializeObjects() {
   divide.OnPressPtr      = 0;
 
   equal.OwnerScreen     = &Screen1;
-  equal.Order          = 14;
+  equal.Order          = 13;
   equal.Left           = 158;
   equal.Top            = 156;
   equal.Width          = 115;
@@ -420,6 +456,438 @@ static void InitializeObjects() {
   equal.OnDownPtr       = 0;
   equal.OnClickPtr      = 0;
   equal.OnPressPtr      = 0;
+
+  multiple.OwnerScreen     = &Screen1;
+  multiple.Order          = 14;
+  multiple.Left           = 115;
+  multiple.Top            = 194;
+  multiple.Width          = 114;
+  multiple.Height         = 113;
+  multiple.Picture_Type   = 0;
+  multiple.Picture_Ratio  = 1;
+  multiple.Picture_Name   = multiple_bmp;
+  multiple.Visible        = 1;
+  multiple.Active         = 1;
+  multiple.OnUpPtr         = 0;
+  multiple.OnDownPtr       = 0;
+  multiple.OnClickPtr      = 0;
+  multiple.OnPressPtr      = 0;
+
+  alphaa.OwnerScreen     = &Screen1;
+  alphaa.Order          = 15;
+  alphaa.Left           = 2;
+  alphaa.Top            = 1;
+  alphaa.Width          = 127;
+  alphaa.Height         = 141;
+  alphaa.Picture_Type        = 1;
+  alphaa.Picture_Ratio  = 1;
+  alphaa.Picture_Name   = A_jpg;
+  alphaa.Visible        = 1;
+  alphaa.Active         = 1;
+  alphaa.OnUpPtr         = 0;
+  alphaa.OnDownPtr       = 0;
+  alphaa.OnClickPtr      = 0;
+  alphaa.OnPressPtr      = 0;
+
+  alphab.OwnerScreen     = &Screen1;
+  alphab.Order          = 16;
+  alphab.Left           = 9;
+  alphab.Top            = 8;
+  alphab.Width          = 115;
+  alphab.Height         = 137;
+  alphab.Picture_Type        = 1;
+  alphab.Picture_Ratio  = 1;
+  alphab.Picture_Name   = B_jpg;
+  alphab.Visible        = 1;
+  alphab.Active         = 1;
+  alphab.OnUpPtr         = 0;
+  alphab.OnDownPtr       = 0;
+  alphab.OnClickPtr      = 0;
+  alphab.OnPressPtr      = 0;
+
+  alphac.OwnerScreen     = &Screen1;
+  alphac.Order          = 17;
+  alphac.Left           = 22;
+  alphac.Top            = 18;
+  alphac.Width          = 123;
+  alphac.Height         = 141;
+  alphac.Picture_Type        = 1;
+  alphac.Picture_Ratio  = 1;
+  alphac.Picture_Name   = C_jpg;
+  alphac.Visible        = 1;
+  alphac.Active         = 1;
+  alphac.OnUpPtr         = 0;
+  alphac.OnDownPtr       = 0;
+  alphac.OnClickPtr      = 0;
+  alphac.OnPressPtr      = 0;
+
+  alphad.OwnerScreen     = &Screen1;
+  alphad.Order          = 18;
+  alphad.Left           = 30;
+  alphad.Top            = 28;
+  alphad.Width          = 118;
+  alphad.Height         = 137;
+  alphad.Picture_Type        = 1;
+  alphad.Picture_Ratio  = 1;
+  alphad.Picture_Name   = D_jpg;
+  alphad.Visible        = 1;
+  alphad.Active         = 1;
+  alphad.OnUpPtr         = 0;
+  alphad.OnDownPtr       = 0;
+  alphad.OnClickPtr      = 0;
+  alphad.OnPressPtr      = 0;
+
+  alphae.OwnerScreen     = &Screen1;
+  alphae.Order          = 19;
+  alphae.Left           = 42;
+  alphae.Top            = 44;
+  alphae.Width          = 107;
+  alphae.Height         = 137;
+  alphae.Picture_Type        = 1;
+  alphae.Picture_Ratio  = 1;
+  alphae.Picture_Name   = E_jpg;
+  alphae.Visible        = 1;
+  alphae.Active         = 1;
+  alphae.OnUpPtr         = 0;
+  alphae.OnDownPtr       = 0;
+  alphae.OnClickPtr      = 0;
+  alphae.OnPressPtr      = 0;
+
+  alphaf.OwnerScreen     = &Screen1;
+  alphaf.Order          = 20;
+  alphaf.Left           = 52;
+  alphaf.Top            = 54;
+  alphaf.Width          = 97;
+  alphaf.Height         = 139;
+  alphaf.Picture_Type        = 1;
+  alphaf.Picture_Ratio  = 1;
+  alphaf.Picture_Name   = F_jpg;
+  alphaf.Visible        = 1;
+  alphaf.Active         = 1;
+  alphaf.OnUpPtr         = 0;
+  alphaf.OnDownPtr       = 0;
+  alphaf.OnClickPtr      = 0;
+  alphaf.OnPressPtr      = 0;
+
+  alphag.OwnerScreen     = &Screen1;
+  alphag.Order          = 21;
+  alphag.Left           = 64;
+  alphag.Top            = 70;
+  alphag.Width          = 130;
+  alphag.Height         = 141;
+  alphag.Picture_Type        = 1;
+  alphag.Picture_Ratio  = 1;
+  alphag.Picture_Name   = G_jpg;
+  alphag.Visible        = 1;
+  alphag.Active         = 1;
+  alphag.OnUpPtr         = 0;
+  alphag.OnDownPtr       = 0;
+  alphag.OnClickPtr      = 0;
+  alphag.OnPressPtr      = 0;
+
+  alphah.OwnerScreen     = &Screen1;
+  alphah.Order          = 22;
+  alphah.Left           = 76;
+  alphah.Top            = 82;
+  alphah.Width          = 117;
+  alphah.Height         = 141;
+  alphah.Picture_Type        = 1;
+  alphah.Picture_Ratio  = 1;
+  alphah.Picture_Name   = H_jpg;
+  alphah.Visible        = 1;
+  alphah.Active         = 1;
+  alphah.OnUpPtr         = 0;
+  alphah.OnDownPtr       = 0;
+  alphah.OnClickPtr      = 0;
+  alphah.OnPressPtr      = 0;
+
+  alphai.OwnerScreen     = &Screen1;
+  alphai.Order          = 23;
+  alphai.Left           = 88;
+  alphai.Top            = 92;
+  alphai.Width          = 34;
+  alphai.Height         = 141;
+  alphai.Picture_Type        = 1;
+  alphai.Picture_Ratio  = 1;
+  alphai.Picture_Name   = I_jpg;
+  alphai.Visible        = 1;
+  alphai.Active         = 1;
+  alphai.OnUpPtr         = 0;
+  alphai.OnDownPtr       = 0;
+  alphai.OnClickPtr      = 0;
+  alphai.OnPressPtr      = 0;
+
+  alphaj.OwnerScreen     = &Screen1;
+  alphaj.Order          = 24;
+  alphaj.Left           = 104;
+  alphaj.Top            = 108;
+  alphaj.Width          = 93;
+  alphaj.Height         = 141;
+  alphaj.Picture_Type        = 1;
+  alphaj.Picture_Ratio  = 1;
+  alphaj.Picture_Name   = J_jpg;
+  alphaj.Visible        = 1;
+  alphaj.Active         = 1;
+  alphaj.OnUpPtr         = 0;
+  alphaj.OnDownPtr       = 0;
+  alphaj.OnClickPtr      = 0;
+  alphaj.OnPressPtr      = 0;
+
+  alphak.OwnerScreen     = &Screen1;
+  alphak.Order          = 25;
+  alphak.Left           = 116;
+  alphak.Top            = 116;
+  alphak.Width          = 118;
+  alphak.Height         = 141;
+  alphak.Picture_Type        = 1;
+  alphak.Picture_Ratio  = 1;
+  alphak.Picture_Name   = K_jpg;
+  alphak.Visible        = 1;
+  alphak.Active         = 1;
+  alphak.OnUpPtr         = 0;
+  alphak.OnDownPtr       = 0;
+  alphak.OnClickPtr      = 0;
+  alphak.OnPressPtr      = 0;
+
+  alphal.OwnerScreen     = &Screen1;
+  alphal.Order          = 26;
+  alphal.Left           = 128;
+  alphal.Top            = 137;
+  alphal.Width          = 99;
+  alphal.Height         = 139;
+  alphal.Picture_Type        = 1;
+  alphal.Picture_Ratio  = 1;
+  alphal.Picture_Name   = L_jpg;
+  alphal.Visible        = 1;
+  alphal.Active         = 1;
+  alphal.OnUpPtr         = 0;
+  alphal.OnDownPtr       = 0;
+  alphal.OnClickPtr      = 0;
+  alphal.OnPressPtr      = 0;
+
+  alpham.OwnerScreen     = &Screen1;
+  alpham.Order          = 27;
+  alpham.Left           = 140;
+  alpham.Top            = 144;
+  alpham.Width          = 132;
+  alpham.Height         = 139;
+  alpham.Picture_Type        = 1;
+  alpham.Picture_Ratio  = 1;
+  alpham.Picture_Name   = M_jpg;
+  alpham.Visible        = 1;
+  alpham.Active         = 1;
+  alpham.OnUpPtr         = 0;
+  alpham.OnDownPtr       = 0;
+  alpham.OnClickPtr      = 0;
+  alpham.OnPressPtr      = 0;
+
+  alphan.OwnerScreen     = &Screen1;
+  alphan.Order          = 28;
+  alphan.Left           = 148;
+  alphan.Top            = 152;
+  alphan.Width          = 115;
+  alphan.Height         = 141;
+  alphan.Picture_Type        = 1;
+  alphan.Picture_Ratio  = 1;
+  alphan.Picture_Name   = N_jpg;
+  alphan.Visible        = 1;
+  alphan.Active         = 1;
+  alphan.OnUpPtr         = 0;
+  alphan.OnDownPtr       = 0;
+  alphan.OnClickPtr      = 0;
+  alphan.OnPressPtr      = 0;
+
+  alphao.OwnerScreen     = &Screen1;
+  alphao.Order          = 29;
+  alphao.Left           = 10;
+  alphao.Top            = 12;
+  alphao.Width          = 134;
+  alphao.Height         = 141;
+  alphao.Picture_Type        = 1;
+  alphao.Picture_Ratio  = 1;
+  alphao.Picture_Name   = O_jpg;
+  alphao.Visible        = 1;
+  alphao.Active         = 1;
+  alphao.OnUpPtr         = 0;
+  alphao.OnDownPtr       = 0;
+  alphao.OnClickPtr      = 0;
+  alphao.OnPressPtr      = 0;
+
+  alphap.OwnerScreen     = &Screen1;
+  alphap.Order          = 30;
+  alphap.Left           = 20;
+  alphap.Top            = 18;
+  alphap.Width          = 106;
+  alphap.Height         = 139;
+  alphap.Picture_Type        = 1;
+  alphap.Picture_Ratio  = 1;
+  alphap.Picture_Name   = P_jpg;
+  alphap.Visible        = 1;
+  alphap.Active         = 1;
+  alphap.OnUpPtr         = 0;
+  alphap.OnDownPtr       = 0;
+  alphap.OnClickPtr      = 0;
+  alphap.OnPressPtr      = 0;
+
+  alphaq.OwnerScreen     = &Screen1;
+  alphaq.Order          = 31;
+  alphaq.Left           = 27;
+  alphaq.Top            = 22;
+  alphaq.Width          = 141;
+  alphaq.Height         = 150;
+  alphaq.Picture_Type        = 1;
+  alphaq.Picture_Ratio  = 1;
+  alphaq.Picture_Name   = Q_jpg;
+  alphaq.Visible        = 1;
+  alphaq.Active         = 1;
+  alphaq.OnUpPtr         = 0;
+  alphaq.OnDownPtr       = 0;
+  alphaq.OnClickPtr      = 0;
+  alphaq.OnPressPtr      = 0;
+
+  alphar.OwnerScreen     = &Screen1;
+  alphar.Order          = 32;
+  alphar.Left           = 38;
+  alphar.Top            = 32;
+  alphar.Width          = 115;
+  alphar.Height         = 139;
+  alphar.Picture_Type        = 1;
+  alphar.Picture_Ratio  = 1;
+  alphar.Picture_Name   = R_jpg;
+  alphar.Visible        = 1;
+  alphar.Active         = 1;
+  alphar.OnUpPtr         = 0;
+  alphar.OnDownPtr       = 0;
+  alphar.OnClickPtr      = 0;
+  alphar.OnPressPtr      = 0;
+
+  alphas.OwnerScreen     = &Screen1;
+  alphas.Order          = 33;
+  alphas.Left           = 56;
+  alphas.Top            = 48;
+  alphas.Width          = 110;
+  alphas.Height         = 141;
+  alphas.Picture_Type        = 1;
+  alphas.Picture_Ratio  = 1;
+  alphas.Picture_Name   = S_jpg;
+  alphas.Visible        = 1;
+  alphas.Active         = 1;
+  alphas.OnUpPtr         = 0;
+  alphas.OnDownPtr       = 0;
+  alphas.OnClickPtr      = 0;
+  alphas.OnPressPtr      = 0;
+
+  alphat.OwnerScreen     = &Screen1;
+  alphat.Order          = 34;
+  alphat.Left           = 68;
+  alphat.Top            = 60;
+  alphat.Width          = 117;
+  alphat.Height         = 139;
+  alphat.Picture_Type        = 1;
+  alphat.Picture_Ratio  = 1;
+  alphat.Picture_Name   = T_jpg;
+  alphat.Visible        = 1;
+  alphat.Active         = 1;
+  alphat.OnUpPtr         = 0;
+  alphat.OnDownPtr       = 0;
+  alphat.OnClickPtr      = 0;
+  alphat.OnPressPtr      = 0;
+
+  alphau.OwnerScreen     = &Screen1;
+  alphau.Order          = 35;
+  alphau.Left           = 78;
+  alphau.Top            = 70;
+  alphau.Width          = 116;
+  alphau.Height         = 141;
+  alphau.Picture_Type        = 1;
+  alphau.Picture_Ratio  = 1;
+  alphau.Picture_Name   = U_jpg;
+  alphau.Visible        = 1;
+  alphau.Active         = 1;
+  alphau.OnUpPtr         = 0;
+  alphau.OnDownPtr       = 0;
+  alphau.OnClickPtr      = 0;
+  alphau.OnPressPtr      = 0;
+
+  alphav.OwnerScreen     = &Screen1;
+  alphav.Order          = 36;
+  alphav.Left           = 94;
+  alphav.Top            = 92;
+  alphav.Width          = 120;
+  alphav.Height         = 141;
+  alphav.Picture_Type        = 1;
+  alphav.Picture_Ratio  = 1;
+  alphav.Picture_Name   = V_jpg;
+  alphav.Visible        = 1;
+  alphav.Active         = 1;
+  alphav.OnUpPtr         = 0;
+  alphav.OnDownPtr       = 0;
+  alphav.OnClickPtr      = 0;
+  alphav.OnPressPtr      = 0;
+
+  alphaw.OwnerScreen     = &Screen1;
+  alphaw.Order          = 37;
+  alphaw.Left           = 106;
+  alphaw.Top            = 104;
+  alphaw.Width          = 170;
+  alphaw.Height         = 141;
+  alphaw.Picture_Type        = 1;
+  alphaw.Picture_Ratio  = 1;
+  alphaw.Picture_Name   = W_jpg;
+  alphaw.Visible        = 1;
+  alphaw.Active         = 1;
+  alphaw.OnUpPtr         = 0;
+  alphaw.OnDownPtr       = 0;
+  alphaw.OnClickPtr      = 0;
+  alphaw.OnPressPtr      = 0;
+
+  alphax.OwnerScreen     = &Screen1;
+  alphax.Order          = 38;
+  alphax.Left           = 122;
+  alphax.Top            = 120;
+  alphax.Width          = 110;
+  alphax.Height         = 141;
+  alphax.Picture_Type        = 1;
+  alphax.Picture_Ratio  = 1;
+  alphax.Picture_Name   = X_jpg;
+  alphax.Visible        = 1;
+  alphax.Active         = 1;
+  alphax.OnUpPtr         = 0;
+  alphax.OnDownPtr       = 0;
+  alphax.OnClickPtr      = 0;
+  alphax.OnPressPtr      = 0;
+
+  alphay.OwnerScreen     = &Screen1;
+  alphay.Order          = 39;
+  alphay.Left           = 136;
+  alphay.Top            = 134;
+  alphay.Width          = 112;
+  alphay.Height         = 141;
+  alphay.Picture_Type        = 1;
+  alphay.Picture_Ratio  = 1;
+  alphay.Picture_Name   = Y_jpg;
+  alphay.Visible        = 1;
+  alphay.Active         = 1;
+  alphay.OnUpPtr         = 0;
+  alphay.OnDownPtr       = 0;
+  alphay.OnClickPtr      = 0;
+  alphay.OnPressPtr      = 0;
+
+  alphaz.OwnerScreen     = &Screen1;
+  alphaz.Order          = 40;
+  alphaz.Left           = 150;
+  alphaz.Top            = 152;
+  alphaz.Width          = 121;
+  alphaz.Height         = 137;
+  alphaz.Picture_Type        = 1;
+  alphaz.Picture_Ratio  = 1;
+  alphaz.Picture_Name   = Z_jpg;
+  alphaz.Visible        = 1;
+  alphaz.Active         = 1;
+  alphaz.OnUpPtr         = 0;
+  alphaz.OnDownPtr       = 0;
+  alphaz.OnClickPtr      = 0;
+  alphaz.OnPressPtr      = 0;
 }
 
 static char IsInsideObject (unsigned int X, unsigned int Y, unsigned int Left, unsigned int Top, unsigned int Width, unsigned int Height) { // static
@@ -602,34 +1070,10 @@ void Check_TP() {
 }
 
 void Init_MCU(){
-//  GPIO_Config(&GPIO_PORTE_DATA_BITS, 0b11110000, _GPIO_DIR_OUTPUT, _GPIO_CFG_DIGITAL_ENABLE | _GPIO_CFG_DRIVE_8mA, 0);
-
-  // R Sensor
-  // This is analog to :
-  GPIO_Config(&GPIO_PORTE_DATA_BITS, 0b11110000, _GPIO_DIR_INPUT, _GPIO_CFG_DIGITAL_ENABLE, _GPIO_PINCODE_NONE);
-
-  //rising edge :
-  GPIO_PORTE_IEV = 0b11110000;
-  GPIO_PORTE_IBE = 0b00000000;
-
-  NVIC_IntEnable(IVT_INT_GPIOE);    // Enable GPIO interrupt
-
-  // interrupt on
-  GPIO_PORTE_IM = 0b11110000;
-
-  // Emition Sensor
-  GPIO_Config(&GPIO_PORTH_DATA_BITS, 0b00001111, _GPIO_DIR_OUTPUT, _GPIO_CFG_DIGITAL_ENABLE | _GPIO_CFG_DRIVE_8mA, 0);
   GPIO_Config(&GPIO_PORTD_DATA_BITS, 0b00001000, _GPIO_DIR_OUTPUT, _GPIO_CFG_DIGITAL_ENABLE | _GPIO_CFG_DRIVE_8mA, 0);
-
-  GPIO_PORTD_DEN   = 0b01101000;     //digital enable
-  GPIO_PORTD_AFSEL = 0b01100000;     // PD5 PD6 Peripheral Signal
-  //GPIO_PORTD_DR8R  = 0b00000000;     // 8mA Drive( I think it's not necessary )
-  GPIO_PORTD_PCTL  = 0x09900000;     // Spec P.1264 Table
-
   TFT_BLED = 1;
   TP_TFT_Rotate_180(0);
 }
-
 
 void Init_Ext_Mem() {
   // Initialize SPI
@@ -652,11 +1096,11 @@ void Start_TP() {
 
   InitializeTouchPanel();
 
-  /*Delay_ms(1000);
+  Delay_ms(1000);
   TFT_Fill_Screen(0);
   Calibrate();
   TFT_Fill_Screen(0);
-  */
+
   InitializeObjects();
   display_width = Screen1.Width;
   display_height = Screen1.Height;

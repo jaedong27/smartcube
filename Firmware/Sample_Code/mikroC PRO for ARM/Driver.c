@@ -301,6 +301,84 @@ void Display_Number(char displaynumberindex)
                            case 15:
                              TFT_Ext_Image(120 - (equal.Width >> 1), 160 - (equal.Height >> 1), equal_bmp, 1);
                            break;
+                           case 16:
+                             TFT_Ext_Image(120 - (alphaa.Width >> 1), 160 - (alphaa.Height >> 1), A_jpg, 1);
+                           break;
+                           case 17:
+                             TFT_Ext_Image(120 - (alphab.Width >> 1), 160 - (alphab.Height >> 1), B_jpg, 1);
+                           break;
+                           case 18:
+                             TFT_Ext_Image(120 - (alphac.Width >> 1), 160 - (alphac.Height >> 1), C_jpg, 1);
+                           break;
+                           case 19:
+                             TFT_Ext_Image(120 - (alphad.Width >> 1), 160 - (alphad.Height >> 1), D_jpg, 1);
+                           break;
+                           case 20:
+                             TFT_Ext_Image(120 - (alphae.Width >> 1), 160 - (alphae.Height >> 1), E_jpg, 1);
+                           break;
+                           case 21:
+                             TFT_Ext_Image(120 - (alphaf.Width >> 1), 160 - (alphaf.Height >> 1), F_jpg, 1);
+                           break;
+                           case 22:
+                             TFT_Ext_Image(120 - (alphag.Width >> 1), 160 - (alphag.Height >> 1), G_jpg, 1);
+                           break;
+                           case 23:
+                             TFT_Ext_Image(120 - (alphah.Width >> 1), 160 - (alphah.Height >> 1), H_jpg, 1);
+                           break;
+                           case 24:
+                             TFT_Ext_Image(120 - (alphai.Width >> 1), 160 - (alphai.Height >> 1), I_jpg, 1);
+                           break;
+                           case 25:
+                             TFT_Ext_Image(120 - (alphaj.Width >> 1), 160 - (alphaj.Height >> 1), J_jpg, 1);
+                           break;
+                           case 26:
+                             TFT_Ext_Image(120 - (alphak.Width >> 1), 160 - (alphak.Height >> 1), K_jpg, 1);
+                           break;
+                           case 27:
+                             TFT_Ext_Image(120 - (alphal.Width >> 1), 160 - (alphal.Height >> 1), L_jpg, 1);
+                           break;
+                           case 28:
+                             TFT_Ext_Image(120 - (alpham.Width >> 1), 160 - (alpham.Height >> 1), M_jpg, 1);
+                           break;
+                           case 29:
+                             TFT_Ext_Image(120 - (alphan.Width >> 1), 160 - (alphan.Height >> 1), N_jpg, 1);
+                           break;
+                           case 30:
+                             TFT_Ext_Image(120 - (alphao.Width >> 1), 160 - (alphao.Height >> 1), O_jpg, 1);
+                           break;
+                           case 31:
+                             TFT_Ext_Image(120 - (alphap.Width >> 1), 160 - (alphap.Height >> 1), P_jpg, 1);
+                           break;
+                           case 32:
+                             TFT_Ext_Image(120 - (alphaq.Width >> 1), 160 - (alphaq.Height >> 1), Q_jpg, 1);
+                           break;
+                           case 33:
+                             TFT_Ext_Image(120 - (alphar.Width >> 1), 160 - (alphar.Height >> 1), R_jpg, 1);
+                           break;
+                           case 34:
+                             TFT_Ext_Image(120 - (alphas.Width >> 1), 160 - (alphas.Height >> 1), S_jpg, 1);
+                           break;
+                           case 35:
+                             TFT_Ext_Image(120 - (alphat.Width >> 1), 160 - (alphat.Height >> 1), T_jpg, 1);
+                           break;
+                           case 36:
+                             TFT_Ext_Image(120 - (alphau.Width >> 1), 160 - (alphau.Height >> 1), U_jpg, 1);
+                           break;
+                           case 37:
+                             TFT_Ext_Image(120 - (alphav.Width >> 1), 160 - (alphav.Height >> 1), V_jpg, 1);
+                           break;
+                           case 38:
+                             TFT_Ext_Image(120 - (alphaw.Width >> 1), 160 - (alphaw.Height >> 1), W_jpg, 1);
+                           break;
+                           case 39:
+                             TFT_Ext_Image(120 - (alphax.Width >> 1), 160 - (alphax.Height >> 1), X_jpg, 1);
+                           break;
+                           case 40:
+                             TFT_Ext_Image(120 - (alphay.Width >> 1), 160 - (alphay.Height >> 1), Y_jpg, 1);
+                           break;
+                           case 41:
+                             TFT_Ext_Image(120 - (alphaz.Width >> 1), 160 - (alphaz.Height >> 1), Z_jpg, 1);
+                           break;
                            
               }
 

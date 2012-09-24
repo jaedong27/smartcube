@@ -105,9 +105,9 @@
     (Doc
       (Type "COrSchematicDoc")
       (Frame
-        (Placement "44 0 1 -1 -1 -1 -1 214 1590 253 861")
-        (Scroll "0 30")
-        (Zoom "100")
+        (Placement "44 2 3 -1 -1 -8 -30 214 1590 253 861")
+        (Scroll "0 0")
+        (Zoom "124")
         (Occurrence "/"))
       (Path
          "Z:\JAEDONG\DESKTOP\SMARTCUBESOURCE\BOARDCIRCUIT\ORCADCIRCUIT\SMARTCUBE.DSN")
