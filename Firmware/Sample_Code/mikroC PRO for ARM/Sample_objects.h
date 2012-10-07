@@ -71,7 +71,16 @@ extern   TImage               alphaw;
 extern   TImage               alphax;
 extern   TImage               alphay;
 extern   TImage               alphaz;
-extern   TImage                 * const code Screen1_Images[41];
+extern   TImage               pokeb1;
+extern   TImage               pokeb2;
+extern   TImage               pokeb3;
+extern   TImage               pokef1;
+extern   TImage               pokef2;
+extern   TImage               pokef3;
+extern   TImage               pokeg1;
+extern   TImage               pokeg2;
+extern   TImage               pokeg3;
+extern   TImage                 * const code Screen1_Images[50];
 
 
 
@@ -122,6 +131,15 @@ extern char alphaw_Caption[];
 extern char alphax_Caption[];
 extern char alphay_Caption[];
 extern char alphaz_Caption[];
+extern char pokeb1_Caption[];
+extern char pokeb2_Caption[];
+extern char pokeb3_Caption[];
+extern char pokef1_Caption[];
+extern char pokef2_Caption[];
+extern char pokef3_Caption[];
+extern char pokeg1_Caption[];
+extern char pokeg2_Caption[];
+extern char pokeg3_Caption[];
 /////////////////////////////////
 
 void DrawScreen(TScreen *aScreen);

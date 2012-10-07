@@ -176,7 +176,16 @@ void Calibrate() {
   TImage               alphax;
   TImage               alphay;
   TImage               alphaz;
-  TImage                 * const code Screen1_Images[41]=
+  TImage               pokeb1;
+  TImage               pokeb2;
+  TImage               pokeb3;
+  TImage               pokef1;
+  TImage               pokef2;
+  TImage               pokef3;
+  TImage               pokeg1;
+  TImage               pokeg2;
+  TImage               pokeg3;
+  TImage                 * const code Screen1_Images[50]=
          {
          &ImageNum0,           
          &ImageNum1,           
@@ -218,7 +227,16 @@ void Calibrate() {
          &alphaw,              
          &alphax,              
          &alphay,              
-         &alphaz               
+         &alphaz,              
+         &pokeb1,              
+         &pokeb2,              
+         &pokeb3,              
+         &pokef1,              
+         &pokef2,              
+         &pokef3,              
+         &pokeg1,              
+         &pokeg2,              
+         &pokeg3               
          };
 
 
@@ -228,9 +246,9 @@ static void InitializeObjects() {
   Screen1.Color                     = 0x8410;
   Screen1.Width                     = 240;
   Screen1.Height                    = 320;
-  Screen1.ImagesCount               = 41;
+  Screen1.ImagesCount               = 50;
   Screen1.Images                    = Screen1_Images;
-  Screen1.ObjectsCount              = 41;
+  Screen1.ObjectsCount              = 50;
 
 
   ImageNum0.OwnerScreen     = &Screen1;
@@ -888,6 +906,150 @@ static void InitializeObjects() {
   alphaz.OnDownPtr       = 0;
   alphaz.OnClickPtr      = 0;
   alphaz.OnPressPtr      = 0;
+
+  pokeb1.OwnerScreen     = &Screen1;
+  pokeb1.Order          = 41;
+  pokeb1.Left           = 10;
+  pokeb1.Top            = 10;
+  pokeb1.Width          = 166;
+  pokeb1.Height         = 171;
+  pokeb1.Picture_Type        = 1;
+  pokeb1.Picture_Ratio  = 1;
+  pokeb1.Picture_Name   = b1_jpg;
+  pokeb1.Visible        = 1;
+  pokeb1.Active         = 1;
+  pokeb1.OnUpPtr         = 0;
+  pokeb1.OnDownPtr       = 0;
+  pokeb1.OnClickPtr      = 0;
+  pokeb1.OnPressPtr      = 0;
+
+  pokeb2.OwnerScreen     = &Screen1;
+  pokeb2.Order          = 42;
+  pokeb2.Left           = 34;
+  pokeb2.Top            = 32;
+  pokeb2.Width          = 164;
+  pokeb2.Height         = 170;
+  pokeb2.Picture_Type        = 1;
+  pokeb2.Picture_Ratio  = 1;
+  pokeb2.Picture_Name   = b2_jpg;
+  pokeb2.Visible        = 1;
+  pokeb2.Active         = 1;
+  pokeb2.OnUpPtr         = 0;
+  pokeb2.OnDownPtr       = 0;
+  pokeb2.OnClickPtr      = 0;
+  pokeb2.OnPressPtr      = 0;
+
+  pokeb3.OwnerScreen     = &Screen1;
+  pokeb3.Order          = 43;
+  pokeb3.Left           = 54;
+  pokeb3.Top            = 46;
+  pokeb3.Width          = 165;
+  pokeb3.Height         = 171;
+  pokeb3.Picture_Type        = 1;
+  pokeb3.Picture_Ratio  = 1;
+  pokeb3.Picture_Name   = b3_jpg;
+  pokeb3.Visible        = 1;
+  pokeb3.Active         = 1;
+  pokeb3.OnUpPtr         = 0;
+  pokeb3.OnDownPtr       = 0;
+  pokeb3.OnClickPtr      = 0;
+  pokeb3.OnPressPtr      = 0;
+
+  pokef1.OwnerScreen     = &Screen1;
+  pokef1.Order          = 44;
+  pokef1.Left           = 14;
+  pokef1.Top            = 16;
+  pokef1.Width          = 165;
+  pokef1.Height         = 170;
+  pokef1.Picture_Type        = 1;
+  pokef1.Picture_Ratio  = 1;
+  pokef1.Picture_Name   = f1_jpg;
+  pokef1.Visible        = 1;
+  pokef1.Active         = 1;
+  pokef1.OnUpPtr         = 0;
+  pokef1.OnDownPtr       = 0;
+  pokef1.OnClickPtr      = 0;
+  pokef1.OnPressPtr      = 0;
+
+  pokef2.OwnerScreen     = &Screen1;
+  pokef2.Order          = 45;
+  pokef2.Left           = 36;
+  pokef2.Top            = 30;
+  pokef2.Width          = 165;
+  pokef2.Height         = 170;
+  pokef2.Picture_Type        = 1;
+  pokef2.Picture_Ratio  = 1;
+  pokef2.Picture_Name   = f2_jpg;
+  pokef2.Visible        = 1;
+  pokef2.Active         = 1;
+  pokef2.OnUpPtr         = 0;
+  pokef2.OnDownPtr       = 0;
+  pokef2.OnClickPtr      = 0;
+  pokef2.OnPressPtr      = 0;
+
+  pokef3.OwnerScreen     = &Screen1;
+  pokef3.Order          = 46;
+  pokef3.Left           = 52;
+  pokef3.Top            = 48;
+  pokef3.Width          = 163;
+  pokef3.Height         = 169;
+  pokef3.Picture_Type        = 1;
+  pokef3.Picture_Ratio  = 1;
+  pokef3.Picture_Name   = f3_jpg;
+  pokef3.Visible        = 1;
+  pokef3.Active         = 1;
+  pokef3.OnUpPtr         = 0;
+  pokef3.OnDownPtr       = 0;
+  pokef3.OnClickPtr      = 0;
+  pokef3.OnPressPtr      = 0;
+
+  pokeg1.OwnerScreen     = &Screen1;
+  pokeg1.Order          = 47;
+  pokeg1.Left           = 42;
+  pokeg1.Top            = 26;
+  pokeg1.Width          = 164;
+  pokeg1.Height         = 169;
+  pokeg1.Picture_Type        = 1;
+  pokeg1.Picture_Ratio  = 1;
+  pokeg1.Picture_Name   = g1_jpg;
+  pokeg1.Visible        = 1;
+  pokeg1.Active         = 1;
+  pokeg1.OnUpPtr         = 0;
+  pokeg1.OnDownPtr       = 0;
+  pokeg1.OnClickPtr      = 0;
+  pokeg1.OnPressPtr      = 0;
+
+  pokeg2.OwnerScreen     = &Screen1;
+  pokeg2.Order          = 48;
+  pokeg2.Left           = 66;
+  pokeg2.Top            = 44;
+  pokeg2.Width          = 166;
+  pokeg2.Height         = 171;
+  pokeg2.Picture_Type        = 1;
+  pokeg2.Picture_Ratio  = 1;
+  pokeg2.Picture_Name   = g2_jpg;
+  pokeg2.Visible        = 1;
+  pokeg2.Active         = 1;
+  pokeg2.OnUpPtr         = 0;
+  pokeg2.OnDownPtr       = 0;
+  pokeg2.OnClickPtr      = 0;
+  pokeg2.OnPressPtr      = 0;
+
+  pokeg3.OwnerScreen     = &Screen1;
+  pokeg3.Order          = 49;
+  pokeg3.Left           = 76;
+  pokeg3.Top            = 54;
+  pokeg3.Width          = 163;
+  pokeg3.Height         = 171;
+  pokeg3.Picture_Type        = 1;
+  pokeg3.Picture_Ratio  = 1;
+  pokeg3.Picture_Name   = g3_jpg;
+  pokeg3.Visible        = 1;
+  pokeg3.Active         = 1;
+  pokeg3.OnUpPtr         = 0;
+  pokeg3.OnDownPtr       = 0;
+  pokeg3.OnClickPtr      = 0;
+  pokeg3.OnPressPtr      = 0;
 }
 
 static char IsInsideObject (unsigned int X, unsigned int Y, unsigned int Left, unsigned int Top, unsigned int Width, unsigned int Height) { // static
@@ -1069,11 +1231,34 @@ void Check_TP() {
   }
 }
 
+
 void Init_MCU(){
+  //  GPIO_Config(&GPIO_PORTE_DATA_BITS, 0b11110000, _GPIO_DIR_OUTPUT, _GPIO_CFG_DIGITAL_ENABLE | _GPIO_CFG_DRIVE_8mA, 0);
+  // R Sensor
+  // This is analog to :
+  GPIO_Config(&GPIO_PORTE_DATA_BITS, 0b11110000, _GPIO_DIR_INPUT, _GPIO_CFG_DIGITAL_ENABLE, _GPIO_PINCODE_NONE);
+
+  //rising edge :
+  GPIO_PORTE_IEV = 0b11110000;
+  GPIO_PORTE_IBE = 0b00000000;
+
+  NVIC_IntEnable(IVT_INT_GPIOE);    // Enable GPIO interrupt
+
+  // interrupt on
+  GPIO_PORTE_IM = 0b11110000;
+
+  // Emition Sensor
+  GPIO_Config(&GPIO_PORTH_DATA_BITS, 0b00001111, _GPIO_DIR_OUTPUT, _GPIO_CFG_DIGITAL_ENABLE | _GPIO_CFG_DRIVE_8mA, 0);
   GPIO_Config(&GPIO_PORTD_DATA_BITS, 0b00001000, _GPIO_DIR_OUTPUT, _GPIO_CFG_DIGITAL_ENABLE | _GPIO_CFG_DRIVE_8mA, 0);
+  GPIO_PORTD_DEN   = 0b01101000;     //digital enable
+  GPIO_PORTD_AFSEL = 0b01100000;     // PD5 PD6 Peripheral Signal
+  //GPIO_PORTD_DR8R  = 0b00000000;     // 8mA Drive( I think it's not necessary )
+  GPIO_PORTD_PCTL  = 0x09900000;     // Spec P.1264 Table
+
   TFT_BLED = 1;
   TP_TFT_Rotate_180(0);
 }
+
 
 void Init_Ext_Mem() {
   // Initialize SPI
@@ -1095,14 +1280,14 @@ void Start_TP() {
   Init_Ext_Mem();
 
   InitializeTouchPanel();
-
+  /*
   Delay_ms(1000);
   TFT_Fill_Screen(0);
   Calibrate();
   TFT_Fill_Screen(0);
-
+  */
   InitializeObjects();
   display_width = Screen1.Width;
   display_height = Screen1.Height;
-  DrawScreen(&Screen1);
+  //DrawScreen(&Screen1);
 }

@@ -2,7 +2,7 @@
 #define __DRIVER        1
 
 
-#define BOARDID             0x2
+#define BOARDID             0x4
 
 extern unsigned int commcompleteflag;
 extern unsigned int servercommcompleteflag;

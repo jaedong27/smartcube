@@ -38,6 +38,8 @@ namespace SmartCubeServer
             httpServer = new SmartCubeHttpServer(8080);
             Thread thread = new Thread(new ThreadStart(httpServer.listen));
             thread.Start();
+
+            //webBrowser.Navigate("\\\\vmware-host\\Shared Folders\\jaedong\\Desktop\\SmartCubeSource\\Application\\index.html");
         }
 
         /*
@@ -56,23 +58,25 @@ namespace SmartCubeServer
 
         private void button1_Click(object sender, EventArgs e)
         {
-            webBrowser.Navigate("\\\\vmware-host\\Shared Folders\\jaedong\\Desktop\\SmartCubeSource\\Application\\Test.html");
+            webBrowser.Navigate("\\\\vmware-host\\Shared Folders\\jaedong\\Desktop\\SmartCubeSource\\Application\\index.html");
         }
+
+        //webBrowser.Navigate("http://localhost:8080");
+        /*SmartCubeStatus vcube = new SmartCubeStatus();
+        vcube.length = 3;
+        // Person 객체를 XMLNode 객체로 변환
+        XmlNode xmlPersion = ObjectSerializer.SerializeObject(vcube, typeof(SmartCubeStatus));
+        //Console.WriteLine(xmlPersion.OuterXml);
+        System.Diagnostics.Debug.WriteLine(xmlPersion.OuterXml);
+
+        // XMLNode 객체를 Person 객체로 변환
+        //SmartCubeStatus person2 = (Person)RKZSerializer.DeserializeObject(xmlPersion, typeof(SmartCubeStatus));
+        //System.Diagnostics.Debug.WriteLine(person2.Age);
+        */
+            
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //webBrowser.Navigate("http://localhost:8080");
-            /*SmartCubeStatus vcube = new SmartCubeStatus();
-            vcube.length = 3;
-            // Person 객체를 XMLNode 객체로 변환
-            XmlNode xmlPersion = ObjectSerializer.SerializeObject(vcube, typeof(SmartCubeStatus));
-            //Console.WriteLine(xmlPersion.OuterXml);
-            System.Diagnostics.Debug.WriteLine(xmlPersion.OuterXml);
-
-            // XMLNode 객체를 Person 객체로 변환
-            //SmartCubeStatus person2 = (Person)RKZSerializer.DeserializeObject(xmlPersion, typeof(SmartCubeStatus));
-            //System.Diagnostics.Debug.WriteLine(person2.Age);
-            */
             
 
             
@@ -83,6 +87,11 @@ namespace SmartCubeServer
         {
             internal string name;
             internal int age;
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            webBrowser.Navigate("\\\\vmware-host\\Shared Folders\\jaedong\\Desktop\\SmartCubeSource\\Application\\test.html");
         }
     }
 }

@@ -6,7 +6,7 @@ Value=0
 [BUILD_TYPE]
 Value=0
 [ACTIVE_TAB]
-Value=Driver.c
+Value=Driver.h
 [USE_EEPROM]
 Value=0
 [EEPROM_DEFINITION]
@@ -53,13 +53,15 @@ Count=0
 [OTHER_FILES]
 Count=0
 [SEARCH_PATH]
-Count=3
+Count=4
 Path0=C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for ARM\defs\
 Path1=\\vmware-host\Shared Folders\jaedong\Desktop\SmartCubeSource\Firmware\Sample_Code\mikroC PRO for ARM\
-Path2=C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for ARM\Uses\Stellaris M3\
+Path2=Z:\jaedong\Desktop\SmartCubeSource\Firmware\Sample_Code\mikroC PRO for ARM\
+Path3=C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for ARM\Uses\Stellaris M3\
 [HEADER_PATH]
-Count=1
+Count=2
 Path0=\\vmware-host\Shared Folders\jaedong\Desktop\SmartCubeSource\Firmware\Sample_Code\mikroC PRO for ARM\
+Path1=Z:\jaedong\Desktop\SmartCubeSource\Firmware\Sample_Code\mikroC PRO for ARM\
 [HEADERS]
 Count=6
 File0=Sample_objects.h

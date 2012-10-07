@@ -247,15 +247,18 @@ void StatusWall()
     } */
 }
 
-//int displaynumberindex = 0;
-
+int predisplaynumberindex = 0;
 void Display_Number(char displaynumberindex)
 {
+            if(predisplaynumberindex == displaynumberindex) return;
             TFT_Set_Pen(CL_BLACK, 1);
             TFT_Set_Brush(1,CL_BLACK, 0,LEFT_TO_RIGHT,CL_BLACK,CL_BLACK);
-            TFT_Rectangle(120 - 60, 160 - 80, 120 + 60, 160 + 80);
+            TFT_Rectangle(120 - 80, 160 - 90, 120 + 80, 160 + 90);
             switch(displaynumberindex)
               {
+                           case 0:
+                           
+                           break;
                            case 1:
                              TFT_Ext_Image(120 - (ImageNum1.Width >> 1), 160 - (ImageNum1.Height >> 1), number1_bmp, 1);
                            break;
@@ -380,8 +383,35 @@ void Display_Number(char displaynumberindex)
                              TFT_Ext_Image(120 - (alphaz.Width >> 1), 160 - (alphaz.Height >> 1), Z_jpg, 1);
                            break;
                            
+                           case 42:
+                             TFT_Ext_Image(120 - (pokeb1.Width >> 1), 160 - (pokeb1.Height >> 1), b1_jpg, 1);
+                           break;
+                           case 43:
+                             TFT_Ext_Image(120 - (pokeb2.Width >> 1), 160 - (pokeb2.Height >> 1), b2_jpg, 1);
+                           break;
+                           case 44:
+                             TFT_Ext_Image(120 - (pokeb3.Width >> 1), 160 - (pokeb3.Height >> 1), b3_jpg, 1);
+                           break;
+                           case 45:
+                             TFT_Ext_Image(120 - (pokef1.Width >> 1), 160 - (pokef1.Height >> 1), f1_jpg, 1);
+                           break;
+                           case 46:
+                             TFT_Ext_Image(120 - (pokef2.Width >> 1), 160 - (pokef2.Height >> 1), f2_jpg, 1);
+                           break;
+                           case 47:
+                             TFT_Ext_Image(120 - (pokef3.Width >> 1), 160 - (pokef3.Height >> 1), f3_jpg, 1);
+                           break;
+                           case 48:
+                             TFT_Ext_Image(120 - (pokeg1.Width >> 1), 160 - (pokeg1.Height >> 1), g1_jpg, 1);
+                           break;
+                           case 49:
+                             TFT_Ext_Image(120 - (pokeg2.Width >> 1), 160 - (pokeg2.Height >> 1), g2_jpg, 1);
+                           break;
+                           case 50:
+                             TFT_Ext_Image(120 - (pokeg3.Width >> 1), 160 - (pokeg3.Height >> 1), g3_jpg, 1);
+                           break;
               }
-
+              predisplaynumberindex = displaynumberindex;
 }
 
 int numberchangeanimationflag = 0;
@@ -470,7 +500,7 @@ void Check_Event(void){
        StatusWall();
      }
      
-     if( tick_1m_time >= (preSendWallRequesttick + 300) )
+     if( tick_1m_time >= (preSendWallRequesttick + 300) && (BOARDID == 1) )
      {
        //UART2_Write_Text("test");
        preSendWallRequesttick = tick_1m_time;
